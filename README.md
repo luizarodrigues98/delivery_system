@@ -56,4 +56,5 @@ Mencione as ferramentas que você usou para criar seu projeto
 * [Rails 6.1](https://guides.rubyonrails.org/v6.1/) 
 * Ruby 2.5.9
 * rspec-rails - framework de testes 
+* FactoryBot - gem para facilitar a criação de dados para os testes
 
