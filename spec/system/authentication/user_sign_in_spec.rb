@@ -11,8 +11,8 @@ describe "Usuario se autentica" do
       fill_in "Senha",	with: "password" 
       click_on 'Entrar'
     end
-    expect(page).not_to have_link 'Entrar' 
     expect(page).to have_button 'Sair'
+    expect(page).not_to have_link 'Entrar' 
   end
 
   it 'espera ver uma mensagem de sucesso' do

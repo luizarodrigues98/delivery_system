@@ -15,7 +15,6 @@
         <%= link_to root_url do %>
           <h1> Sistema de Fretes </h1>
         <%end%>
-        <nav>
           <%if user_signed_in?%>
             <%= current_user.description %> |
 
@@ -23,7 +22,6 @@
           <%else%>
             <%= link_to "Entrar", new_user_session_url %> |
           <%end%>
-        </nav>
 
       </header>
     <main>  
