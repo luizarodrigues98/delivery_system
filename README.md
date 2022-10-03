@@ -54,8 +54,10 @@ rspec
 Mencione as ferramentas que você usou para criar seu projeto
 
 * [Rails 6.1](https://guides.rubyonrails.org/v6.1/) 
+* Projeto sendo desenvolvido em: https://trello.com/b/ApvCIH2l/freight-app
 * Ruby 2.5.9
 * rspec-rails - framework de testes 
 * FactoryBot - gem para facilitar a criação de dados para os testes
 * Bootstrap - adicionado como recomendado na descrição do projeto usando o seguinte [tutorial](https://matthewhoelter.com/2021/08/13/how-to-install-bootstrap-5-in-ruby-on-rails-6-with-webpack.html)
+
 
