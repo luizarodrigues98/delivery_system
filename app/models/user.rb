@@ -5,7 +5,9 @@ class User < ApplicationRecord
   validates :name, presence: true
   
   before_validation :ensure_email_domain
-
+  def description
+    "#{name} - #{email}"
+  end
   private
 
   def ensure_email_domain

@@ -7,5 +7,6 @@ describe 'Usuário visita tela inicial' do
     visit root_path
 
     expect(current_path).to eq root_path
+    expect(page).to have_content('Sistema de Fretes')  
   end
 end

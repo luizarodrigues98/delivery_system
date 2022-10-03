@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DeliverySystem</title>
+    <title>Sistema de Fretes</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,12 +11,33 @@
   </head>
 
   <body>
-  <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
-  <%= yield %>
+     <header>
+        <%= link_to root_url do %>
+          <h1> Sistema de Fretes </h1>
+        <%end%>
+        <nav>
+          <%if user_signed_in?%>
+            <%= current_user.description %> |
+
+            <%= button_to 'Sair', destroy_user_session_url, method: :delete%>
+          <%else%>
+            <%= link_to "Entrar", new_user_session_url %> |
+          <%end%>
+        </nav>
+
+      </header>
+    <main>  
+      <div>
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %> 
+
+      </div>
+      <%= yield %>
+    </main>
+
   </body>
 </html>
