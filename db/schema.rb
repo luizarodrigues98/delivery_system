@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_05_154234) do
+ActiveRecord::Schema.define(version: 2022_10_05_191357) do
 
   create_table "transport_types", force: :cascade do |t|
     t.string "name", null: false
@@ -37,4 +37,18 @@ ActiveRecord::Schema.define(version: 2022_10_05_154234) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.string "plate", default: "xxx-000", null: false
+    t.string "brand", default: "Toyota", null: false
+    t.string "model", default: "Etios", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "max_weight", default: 0, null: false
+    t.integer "fabrication_year", default: 0, null: false
+    t.integer "transport_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["transport_type_id"], name: "index_vehicles_on_transport_type_id"
+  end
+
+  add_foreign_key "vehicles", "transport_types"
 end

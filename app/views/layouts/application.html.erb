@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>Sistema de Fretes</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,31 +12,81 @@
   </head>
 
   <body>
-     <header>
-        <%= link_to root_url do %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <%= link_to root_url, class:"navbar-brand" do%>
           <h1> Sistema de Fretes </h1>
-        <%end%>
-          <%if user_signed_in?%>
-            <%= current_user.description %> |
-
-            <%= button_to 'Sair', destroy_user_session_url, method: :delete%>
-          <%else%>
-            <%= link_to "Entrar", new_user_session_url %> |
           <%end%>
 
-      </header>
-    <main>  
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <%= link_to "Veículos", vehicles_path, class:"nav-link active" %>
+
+              </li>
+              <li class="nav-item">
+                <%= link_to "Modalidade de Transporte", transport_types_url , class:"nav-link" %>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Ordem de Serviços
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Pendentes</a></li>
+                  <li><a class="dropdown-item" href="#">Ativas</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <%if user_signed_in?%>
+                    <%= current_user.description %> |
+                  <%else%>
+                   <p> | </p>
+                  <%end%>
+        
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">
+                    <%if user_signed_in?%>
+                      <%=  button_to 'Sair', destroy_user_session_url, method: :delete %>
+                  <%end%></a>
+                   </li>
+                    <hr class="dropdown-divider">
+                  </li>
+                </ul>
+              </li>
+
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+
+
+    </header>
+    <main>
       <div>
         <% if notice %>
-          <p class="alert alert-success"><%= notice %></p>
+        <p class="alert alert-success"><%= notice %></p>
         <% end %>
         <% if alert %>
-          <p class="alert alert-danger"><%= alert %></p>
-        <% end %> 
+        <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
 
       </div>
       <%= yield %>
     </main>
 
   </body>
+
 </html>
