@@ -1,0 +1,19 @@
+
+<h1> Modalidade de Transporte</h1> 
+
+<% @transport_types.each do |t|%>
+  <div>
+    <%= link_to t.name, transport_type_url(t.id)%>
+  </div>
+  <div>
+    <p> Taxa fixa: R$<%= t.fixed_rate%> </p>
+     
+    <p> Distância Máxima:   <%= t.max_distance%>Km </p>
+    
+  </div>
+<%end%>
+  <div>
+  <%if current_user.is_admin? %>
+    <%= link_to "Cadastrar Modalidade de Transporte", new_transport_type_url %>
+  <%end%>
+  </div>

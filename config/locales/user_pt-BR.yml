@@ -2,7 +2,15 @@ pt-BR:
   activerecord:
     models:
       user: Usuário
+      transport_type: Modalidade de Transporte
     attributes:
       user:
         name: Nome
-        
+      transport_type:
+        name: Nome
+        min_distance: Distância Mínima
+        max_distance: Distância Máxima
+        min_weight: Peso Mínimo
+        max_weight: Peso Máximo
+        fixed_rate: Taxa fixa
+        active: Atividade

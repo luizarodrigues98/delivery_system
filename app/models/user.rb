@@ -5,9 +5,15 @@ class User < ApplicationRecord
   validates :name, presence: true
   
   before_validation :ensure_email_domain
+  
   def description
     "#{name} - #{email}"
   end
+
+  def is_admin?
+    admin == true
+  end
+
   private
 
   def ensure_email_domain
