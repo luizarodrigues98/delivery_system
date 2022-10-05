@@ -12,11 +12,11 @@ class VehiclesController < ApplicationController
   
   def active
     @vehicle.update(status: 0)
-    redirect_to vehicle_path(@vehicle.id), notice: 'Status do veiculo: ativado'
+    redirect_to vehicle_path(@vehicle.id), notice: 'Status do veículo: ativado'
   end
   def maintenance
     @vehicle.update(status: 2)
-    redirect_to vehicle_path(@vehicle.id), notice: 'Status do veiculo: em manutenção'
+    redirect_to vehicle_path(@vehicle.id), notice: 'Status do veículo: em manutenção'
   end
 
   def new
@@ -29,17 +29,17 @@ class VehiclesController < ApplicationController
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.status = 0
     if @vehicle.save!
-      redirect_to vehicle_path(@vehicle), notice: 'Veiculo registrado com sucesso'
+      redirect_to vehicle_path(@vehicle), notice: 'Veículo registrado com sucesso'
     else
       @transport_types = TransportType.all
-      flash.now[:notice] = 'Não foi possível registrar o veiculo'
+      flash.now[:notice] = 'Não foi possível registrar o veículo'
       render 'new'
     end
   end
   private
 
   def vehicle_params
-    params.require(:vehicle).permit(:plate, :model, :status, :max_weight, :fabrication_year, :transport_type_id)
+    params.require(:vehicle).permit(:plate, :brand ,:model, :status, :max_weight, :fabrication_year, :transport_type_id)
   end
   def set_vehicle
     @vehicle = Vehicle.find(params[:id])    
