@@ -1,0 +1,18 @@
+<h3>Detalhes do veiculo <%= @vehicle.plate%></h3>
+
+<div>
+  <p> Marca: <%=@vehicle.brand%> </p>
+  <p> Modelo: <%=@vehicle.model%></p>
+  <p> Capacidade Máxima: <%=@vehicle.max_weight%>Kg</p>
+  <p> Ano de Fabricação: <%=@vehicle.fabrication_year%></p>
+  <p>Status: <%=  I18n.translate(@vehicle.status)%></p>
+  
+</div>
+
+<div>
+  <%if current_user.is_admin? %>
+    <%= button_to "Ativar", active_vehicle_url(@vehicle.id)  %>
+    <%= button_to "Em manutenção", maintenance_vehicle_url(@vehicle.id)  %>
+  <%end%>
+</div>
+

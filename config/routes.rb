@@ -8,5 +8,10 @@ Rails.application.routes.draw do
       post :activate
     end
   end
-  resources :vehicles
+  resources :vehicles do
+    member do  
+      post :active
+      post :maintenance
+    end
+  end
 end

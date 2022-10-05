@@ -1,0 +1,18 @@
+
+<h3> Veiculos</h3> 
+
+<% @vehicles.each do |t|%>
+  <div>
+    <%= link_to t.plate, vehicle_path(t.id)%>
+    <p> Marca: <%= t.brand%> </p>
+    <p> Modelo: <%= t.model%></p>
+    <p>Status:  <%=  I18n.translate(t.status)%></p>
+    
+  </div>
+<%end%>
+  <div>
+  <%if current_user.is_admin? %>
+    <%= link_to "Cadastrar Veiculo", new_vehicle_url %>
+  <%end%>
+  </div>
+

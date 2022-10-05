@@ -1,0 +1,14 @@
+pt-BR:
+  active: Ativo
+  allocated: Alocado
+  maintenance: Em Manutenção
+  activerecord:
+    models:
+      vehicle: Veículo
+    attributes:
+      vehicle:
+        plate: Placa
+        max_weight: Capacidade Máxima
+        fabrication_year: Ano de Fabricação
+        transport_type_id: Tipo de transporte
+        model: Modelo
