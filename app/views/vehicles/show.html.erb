@@ -13,6 +13,8 @@
   <%if current_user.is_admin? %>
     <%= button_to "Ativar", active_vehicle_url(@vehicle.id)  %>
     <%= button_to "Em manutenção", maintenance_vehicle_url(@vehicle.id)  %>
+    <%= button_to("Excluir", vehicle_path(@vehicle.id), method: :delete)%>
+    <%= link_to "Editar", edit_vehicle_path(@vehicle.id) %>
   <%end%>
 </div>
 

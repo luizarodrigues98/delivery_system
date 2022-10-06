@@ -50,6 +50,26 @@ describe "Usuário cadastra um veiculo" do
   end
 
   it 'com dados incompletos' do
+    user = User.create!(name: 'Luiza', email: 'luiza@sistemadefrete.com.br', password: 'password', admin: true)
+    transport_type = TransportType.create!(name: 'Carro', min_distance: 2, max_distance: 200, min_weight: 0, max_weight: 100, fixed_rate: 1000, active: true)
+    
+    #act
+    visit root_path
+    login_as(user)
+    visit root_path
+    click_on 'Veículos'
+    click_on 'Cadastrar Veículo'
+    fill_in "Placa",	with: ""
+    fill_in 'Modelo',	with: ''
+    fill_in 'Marca',	with: ''
+    fill_in 'Capacidade Máxima',	with: 0
+    fill_in 'Ano de Fabricação',	with: 0
+    select 'Carro' ,	from: "Tipo de transporte" 
+    click_on 'Enviar'
+    #assert
+    # expect(current_path).to eq vehicle_path(@vehicle.id) 
+    expect(page).to have_content 'Não foi possível registrar o veículo'
+
   end
 end
  

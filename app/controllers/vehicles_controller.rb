@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_vehicle, only: [:show, :edit, :update, :active, :maintenance] 
+  before_action :set_vehicle, only: [:show, :edit, :update, :active, :maintenance, :destroy] 
   before_action :check_is_admin, except: [:index, :show]
 
   def index
@@ -28,13 +28,31 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(vehicle_params)
     @vehicle.status = 0
-    if @vehicle.save!
+    if @vehicle.save
       redirect_to vehicle_path(@vehicle), notice: 'Veículo registrado com sucesso'
     else
       @transport_types = TransportType.all
       flash.now[:notice] = 'Não foi possível registrar o veículo'
       render 'new'
     end
+  end
+
+  def edit
+    @transport_types = TransportType.all
+  end
+  def update
+    if @vehicle.update(vehicle_params)
+      redirect_to @vehicle, notice: 'Veículo atualizado com sucesso'
+    else
+      @transport_types = TransportType.all
+      flash.now[:notice] = 'Não foi possível atualizar o veiculo'
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @vehicle.destroy 
+    redirect_to vehicles_path, notice: 'Veículo removido com sucesso'        
   end
   private
 
