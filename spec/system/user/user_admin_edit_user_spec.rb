@@ -11,7 +11,7 @@ describe "Usuário(admin) edita um usuário regular" do
     login_as(user)
     visit root_path
     click_on('Usuários')
-    within 'table' do
+    within 'table', id: 'user' do
       click_on 'Editar'
     end
     fill_in 'Nome', with: 'Teste'

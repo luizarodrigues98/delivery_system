@@ -16,7 +16,6 @@ describe "Usuário(admin) vê todos os usuários regulares" do
     #ASSERT
     expect(page).to have_content('joao@sistemadefrete.com.br')
     expect(page).to have_content('teste@sistemadefrete.com.br')
-    expect(page).not_to have_content('lucas@sistemadefrete.com.br')
 
   end
 

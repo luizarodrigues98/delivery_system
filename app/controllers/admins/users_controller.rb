@@ -1,7 +1,8 @@
-class UsersController < ApplicationController
+class Admins::UsersController < ApplicationController
   before_action :authenticate_user!
   def index
     @users = User.where(admin: false)
+    @admins = User.where(admin: true)
   end
 
   def new
@@ -9,9 +10,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user.save(user_params)
+    @user = User.new(user_params)
+    @user.password = '123456'
     if @user.save
-      redirect_to users_path, notice: 'Usuário cadastrado com sucesso'
+      redirect_to admins_users_path, notice: 'Usuário cadastrado com sucesso'
     else
       flash.now[:notice]  = 'Não foi possível criar usuário'
       render 'new'
@@ -21,11 +23,11 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to users_path, notice: 'Usuário atualizado com sucesso'
+      redirect_to admins_users_path, notice: 'Usuário atualizado com sucesso'
     else
       flash.now[:notice] = 'Não foi possível atualizar o usuário'
       render 'edit'
@@ -35,11 +37,11 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_path, notice: 'Usuário removido com sucesso'
+    redirect_to admins_users_path, notice: 'Usuário removido com sucesso'
   end
 
   private 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :confirmation_password)
+    params.require(:user).permit(:admin, :name, :email, :password, :confirmation_password)
   end
 end

@@ -15,5 +15,7 @@ Rails.application.routes.draw do
       post :maintenance
     end
   end
-  resources :users
+  namespace :admins do
+    resources :users
+  end
 end

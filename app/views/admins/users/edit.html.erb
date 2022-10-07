@@ -1,0 +1,14 @@
+<h2>Editar Usuário</h2>
+<%= form_with(model: @user, url: admins_user_path(@user) ) do |f| %>
+  <div>
+      <%= f.label :name %>
+      <%= f.text_field :name%>
+    </div>  
+    <div>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div>
+      <%= f.submit 'Enviar' %>
+    </div>
+<% end %>
