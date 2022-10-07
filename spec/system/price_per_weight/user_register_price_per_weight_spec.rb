@@ -13,11 +13,11 @@ describe "Usuário cadastra uma configuração de preço por peso" do
     login_as(user)
     click_on 'Modalidade de Transporte'
     click_on transport_type.name
-    click_on ''
+    click_on 'Cadastrar Preço por Peso'
     #assert
-    expect(page).to have_field('Peso inicial') 
-    expect(page).to have_field('Peso final')
-    expect(page).to have_field('Taxa')
+    expect(page).to have_field('Peso Inicial') 
+    expect(page).to have_field('Peso Final')
+    expect(page).to have_field('Taxa por Km')
 
 
   end
@@ -31,17 +31,18 @@ describe "Usuário cadastra uma configuração de preço por peso" do
     login_as(user)
     click_on 'Modalidade de Transporte'
     click_on transport_type.name
+    click_on 'Cadastrar Preço por Peso'
 
-    fill_in 'Peso inicial',	with: 0
-    fill_in 'Peso final',	with: 500
-    fill_in 'Taxa',	with: 1000  
+    fill_in 'Peso Inicial',	with: 5
+    fill_in 'Peso Final',	with: 25
+    fill_in 'Taxa',	with: 10  
  
     click_on 'Enviar'
     #assert
     expect(current_path).to  eq transport_type_path(transport_type.id)
-    expect(page).to have_content 'Modalidade de transporte cadastrado com sucesso.' 
-    expect(page).to have_content ' ' 
-    expect(page).to have_content ' '
+    expect(page).to have_content 'Cadastrado com sucesso' 
+    expect(page).to have_content 'Valor por Km' 
+    expect(page).to have_content '5Kg - 25kg'
      
 
   end
