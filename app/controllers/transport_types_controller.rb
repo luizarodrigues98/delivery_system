@@ -7,6 +7,7 @@ class TransportTypesController < ApplicationController
   end
 
   def show
+    @price_per_weights = @transport_type.price_per_weights
   end
 
   def new

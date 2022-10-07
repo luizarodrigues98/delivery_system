@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root to: "home#index"
   resources :transport_types  do
+    resources :price_per_weights, except: [:index, :show]
     member do  
       post :deactivate
       post :activate
@@ -14,5 +15,5 @@ Rails.application.routes.draw do
       post :maintenance
     end
   end
-  resources :price_per_weights, only: [:edit, :update, :new, :create, :destroy]
+  
 end

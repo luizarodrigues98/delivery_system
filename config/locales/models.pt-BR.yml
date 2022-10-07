@@ -5,6 +5,7 @@ pt-BR:
   activerecord:
     models:
       vehicle: Veículo
+      price_per_weight: Preço por Peso
     attributes:
       vehicle:
         plate: Placa
@@ -13,3 +14,8 @@ pt-BR:
         transport_type_id: Tipo de transporte
         model: Modelo
         brand: Marca
+      price_per_weight:
+        start_weight: Peso Inicial
+        end_weight: Peso Final
+        transport_type_id: Modalidade de Transporte
+        value_per_distance: Taxa por Km

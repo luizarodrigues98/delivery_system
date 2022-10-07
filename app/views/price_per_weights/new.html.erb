@@ -1,0 +1,28 @@
+<h2>Cadastrar Configuração Preço por Peso</h2>
+<%if(@price_per_weight.errors.any?)%>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @price_per_weight.errors.full_messages.each do |msg|%>
+      <li><%= msg %> </li>
+    <%end%>
+  </ul>
+<%end%>
+
+<%= form_with(model: @price_per_weight, url: transport_type_price_per_weights_path(@transport_type.id)) do |f| %> 
+    <div>
+      <%= f.label :start_weight %>
+      <%= f.number_field :start_weight %>
+    </div>
+    <div>
+      <%= f.label :end_weight %>
+      <%= f.number_field :end_weight %>
+    </div>  
+    <div>
+      <%= f.label :value_per_distance %>
+      <%= f.number_field :value_per_distance %>  
+    </div>
+
+    <div>
+      <%= f.submit 'Enviar' %>
+    </div>
+<% end %>

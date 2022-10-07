@@ -9,9 +9,22 @@
   </ul>  
 </div>
 <div>
+<h3> Taxa por peso </h3> 
+<div>
+  <% @price_per_weights.each do |price|%>
+    <ul>
+      <li><strong>Peso Inicial: </strong><%=  price.start_weight  %>Kg</li>
+      <li><strong>Peso final: </strong><%= price.end_weight  %>Kg</li>
+      <li><strong>Taxa: R$</strong><%=  price.value_per_distance %> </li>
+    </ul> 
+  <%end%> 
+</div>
+<div>
 <% if current_user.is_admin? %>
   <%= link_to('Editar', edit_transport_type_path(@transport_type.id)) %>
   <%= button_to('Excluir', transport_type_path(@transport_type.id), method: :delete) %>
+  <%= link_to "Cadastrar Preço por Peso", new_transport_type_price_per_weight_path(@transport_type.id) %>
+  
   <% unless @transport_type.active %>
     <%= button_to "Ativar", activate_transport_type_path(@transport_type.id) %>
   <% else %>
