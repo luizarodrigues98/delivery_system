@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_06_184450) do
+ActiveRecord::Schema.define(version: 2022_10_07_194611) do
 
   create_table "price_per_weights", force: :cascade do |t|
     t.integer "start_weight", default: 0, null: false
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(version: 2022_10_06_184450) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.string "name"
-    t.boolean "admin"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

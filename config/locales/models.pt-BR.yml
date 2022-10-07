@@ -6,6 +6,7 @@ pt-BR:
     models:
       vehicle: Veículo
       price_per_weight: Preço por Peso
+      user: Usuário
     attributes:
       vehicle:
         plate: Placa
@@ -19,3 +20,6 @@ pt-BR:
         end_weight: Peso Final
         transport_type_id: Modalidade de Transporte
         value_per_distance: Taxa por Km
+      user:
+        name: Nome
+        email: E-mail

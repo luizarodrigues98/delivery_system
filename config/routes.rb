@@ -15,5 +15,5 @@ Rails.application.routes.draw do
       post :maintenance
     end
   end
-  
+  resources :users
 end
