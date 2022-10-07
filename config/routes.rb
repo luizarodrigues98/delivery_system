@@ -14,4 +14,5 @@ Rails.application.routes.draw do
       post :maintenance
     end
   end
+  resources :price_per_weights, only: [:edit, :update, :new, :create, :destroy]
 end
