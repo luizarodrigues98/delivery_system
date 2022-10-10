@@ -12,61 +12,46 @@
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <%= link_to root_url, class:"navbar-brand" do%>
-        <h1> Sistema de Fretes </h1>
+  <header class="p-3 mb-3 border-bottom">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <%= link_to root_url, class:"d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none" do%>
+          <span class="fs-4"> Sistema de Fretes </span>
         <%end%>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <%= link_to "Veículos", vehicles_path, class:"nav-link active" %>
-
-            </li>
-            <li class="nav-item">
-              <%= link_to "Modalidade de Transporte", transport_types_url , class:"nav-link" %>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Ordem de Serviços
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Pendentes</a></li>
-                <li><a class="dropdown-item" href="#">Ativas</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item ">
-                <%if user_signed_in?%>
-                  <%= current_user.description%> |
-                  <%=  button_to 'Sair', destroy_user_session_url, method: :delete %>
-                <%else%>
-                <p> | </p>
-                <%end%>
-              </li>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">
-                  </a>
-                </li>
-                <hr class="dropdown-divider">
-            </li>
-          </ul>
+        
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li>
+            <%= link_to "Veículos", vehicles_path, class:"nav-link px-2 link-#{controller_name == 'vehicles' ? 'secondary' : 'dark'}" %>
           </li>
-
+          <li>
+            <%= link_to "Modalidade de Transporte", transport_types_url , class:"nav-link px-2 link-#{controller_name == 'transport_types' ? 'secondary' : 'dark'}" %>
+          </li>
+          <li class="dropdown">
+            <a class="<%= "nav-link px-2 link-#{controller_name == 'service_orders' ? 'secondary' : 'dark'} dropdown-toggle" %>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Ordem de Serviços
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Pendentes</a></li>
+              <li><a class="dropdown-item" href="#">Ativas</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Ver Todas</a></li>
+            </ul>
+          </li>
+        </ul>
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small">
+            <li><a class="dropdown-item" href="#">Minha Conta</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%=  button_to 'Sair', destroy_user_session_url, method: :delete, class: "dropdown-item"%></li>
           </ul>
-
         </div>
       </div>
-    </nav>
+    </div>
 
 
   </header>
