@@ -9,9 +9,11 @@ describe "Usuário cadastra uma configuração de preço por peso" do
     transport_type = TransportType.create!(name: 'Motocicleta', min_distance: 2, max_distance: 20, min_weight: 0, max_weight: 10, fixed_rate: 1000, active: true)
 
     #act
-    visit root_path
     login_as(user)
-    click_on 'Modalidade de Transporte'
+    visit root_path
+    within 'header' do
+      click_on 'Modalidade de Transporte'
+    end    
     click_on transport_type.name
     click_on 'Cadastrar Preço por Peso'
     #assert
@@ -27,9 +29,11 @@ describe "Usuário cadastra uma configuração de preço por peso" do
     transport_type = TransportType.create!(name: 'Motocicleta', min_distance: 2, max_distance: 20, min_weight: 0, max_weight: 10, fixed_rate: 1000, active: true)
     
     #act
-    visit root_path
     login_as(user)
-    click_on 'Modalidade de Transporte'
+    visit root_path
+    within 'header' do
+      click_on 'Modalidade de Transporte'
+    end    
     click_on transport_type.name
     click_on 'Cadastrar Preço por Peso'
 

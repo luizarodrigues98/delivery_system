@@ -1,6 +1,6 @@
 class PricePerWeightsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_price_weight, only: [:edit, :destroy]
+  before_action :set_price_weight, only: [:edit, :update, :destroy]
   def new
     @price_per_weight = PricePerWeight.new
     @transport_type = TransportType.find(params[:transport_type_id])
@@ -32,7 +32,7 @@ class PricePerWeightsController < ApplicationController
     end
   end
   def destroy
-    @transport_type = TransportType.find(params[:id])
+    @transport_type = TransportType.find(params[:transport_type_id])
     @price_per_weight.destroy
     redirect_to transport_type_path(@transport_type.id), notice: 'Intervalo removido com sucesso'        
 

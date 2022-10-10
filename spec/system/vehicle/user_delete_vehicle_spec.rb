@@ -8,10 +8,12 @@ describe "Usuário remove um veículo" do
     vehicle = Vehicle.create!(plate: 'XYZ-123', brand:'Chevrolet', model: 'GOL', status: 0, max_weight: 100, fabrication_year: 2015, transport_type: transport_type)
 
     #act
-    visit root_path
     login_as(user)
     visit root_path
-    click_on 'Veículos'
+    visit root_path
+    within 'header' do
+      click_on 'Veículos'
+    end
     click_on 'XYZ-123'
     click_on 'Excluir'
     expect(current_path).to eq vehicles_path
@@ -25,9 +27,11 @@ describe "Usuário remove um veículo" do
     other_vehicle = Vehicle.create!(plate: 'XYZ-145', brand:'Chevrolet', model: 'Polo', status: 0, max_weight: 100, fabrication_year: 2015, transport_type: transport_type)
     
     #act
-    visit root_path
     login_as(user)
-    click_on 'Veículos'
+    visit root_path
+    within 'header' do
+      click_on 'Veículos'
+    end    
     click_on 'XYZ-123'
     click_on 'Excluir'
     expect(current_path).to eq vehicles_path
