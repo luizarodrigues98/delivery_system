@@ -47,11 +47,29 @@ describe "Usuário cadastra uma configuração de preço por peso" do
     expect(page).to have_content 'Cadastrado com sucesso' 
     expect(page).to have_content 'Valor por Km' 
     expect(page).to have_content '5Kg - 25kg'
-     
-
   end
 
   it 'com dados incompletos' do
+    user = User.create!(name: 'Luiza', email: 'luiza@sistemadefrete.com.br', password: 'password', admin: true)
+    transport_type = TransportType.create!(name: 'Motocicleta', min_distance: 2, max_distance: 20, min_weight: 0, max_weight: 10, fixed_rate: 1000, active: true)
+    
+    #act
+    login_as(user)
+    visit root_path
+    within 'header' do
+      click_on 'Modalidade de Transporte'
+    end    
+    click_on transport_type.name
+    click_on 'Cadastrar Preço por Peso'
+
+    fill_in 'Peso Inicial',	with: 5
+    fill_in 'Peso Final',	with: nil
+    fill_in 'Taxa',	with: nil  
+ 
+    click_on 'Enviar'
+    #assert
+    expect(page).to have_content 'Peso Final não pode ficar em branco' 
+    expect(page).to have_content 'Taxa por Km não pode ficar em branco' 
   end
 end
  

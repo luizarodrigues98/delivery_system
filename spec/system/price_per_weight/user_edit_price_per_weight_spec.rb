@@ -30,24 +30,37 @@ describe "Usuário edita uma configuração de preço por peso" do
     transport_type = TransportType.create!(name: 'Motocicleta', min_distance: 2, max_distance: 20, min_weight: 0, max_weight: 10, fixed_rate: 1000, active: true)
     
     #act
-    visit root_path
     login_as(user)
+    visit root_path
     visit root_path
     click_on 'Modalidade de Transporte'
     click_on transport_type.name
-    
+    click_on 'Cadastrar Preço por Peso'
+    fill_in "Peso Inicial",	with: 5 
+    fill_in "Peso Final",	with: 15 
+    fill_in "Taxa por Km",	with: 5 
+    click_on 'Enviar'
+    expect(page).to have_content('Cadastrado com sucesso')
+    expect(page).to have_content('5Kg - 15kg')
+
   end
   
   it "e mantém os campos obrigatórios" do
     user = User.create!(name: 'Luiza', email: 'luiza@sistemadefrete.com.br', password: 'password', admin: true)
     transport_type = TransportType.create!(name: 'Motocicleta', min_distance: 2, max_distance: 20, min_weight: 0, max_weight: 10, fixed_rate: 1000, active: true)
 
-    visit root_path
     login_as(user)
+    visit root_path
     visit root_path
     click_on 'Modalidade de Transporte'
     click_on transport_type.name
-    
+    click_on 'Cadastrar Preço por Peso'
+    fill_in "Peso Inicial",	with: nil
+    fill_in "Peso Final",	with: nil 
+    fill_in "Taxa por Km",	with: 5 
+    click_on 'Enviar'
+    expect(page).to have_content 'Peso Final não pode ficar em branco' 
+    expect(page).to have_content('Peso Inicial não pode ficar em branco')
   end
   
 end
