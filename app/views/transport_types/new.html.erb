@@ -31,8 +31,9 @@
     </div>  
     <div>
       <%= f.label :fixed_rate %>
-      <%= f.number_field :fixed_rate %>
+      <%= f.number_field :fixed_rate, step: :any %>
     </div>
+
     <div>
       <%= f.label :active %>
       <%= f.text_field :active %>

@@ -9,4 +9,8 @@ class TransportType < ApplicationRecord
   validates :max_weight, presence: true
   validates :min_weight, presence: true
   validates :fixed_rate, presence: true
+
+  def currency
+    self.fixed_rate / 100.0
+  end
 end

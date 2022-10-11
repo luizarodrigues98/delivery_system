@@ -3,7 +3,7 @@
   <ul>
     <li><strong>Distância Mínima: </strong><%=  @transport_type.min_distance  %>Km</li>
     <li><strong>Distância Máxima: </strong><%= @transport_type.max_distance %>Km</li>
-    <li><strong>Taxa fixa: R$</strong><%= @transport_type.fixed_rate %> </li>
+    <li><strong>Taxa fixa: </strong><%= number_to_currency(@transport_type.currency, unit: "R$", separator: ",", delimiter: "") %></li>
     <li><strong>Peso máximo: </strong><%= @transport_type.max_weight %>Kg </li>
     <li><strong>Status: </strong><%= @transport_type.active ? 'Ativo' : 'Desativado' %> </li>
   </ul>  

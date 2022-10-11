@@ -8,10 +8,8 @@
     </ul>
   </div>
   <div>
-    <p> Taxa fixa: R$<%= t.fixed_rate%> </p>
-     
-    <p> Distância Máxima:   <%= t.max_distance%>Km </p>
-    
+    <p> Taxa fixa: <%= number_to_currency(t.currency, unit: "R$", separator: ",", delimiter: "") %> </p>
+    <p> Distância Máxima: <%= t.max_distance%>Km </p>
   </div>
 <%end%>
 <div>
