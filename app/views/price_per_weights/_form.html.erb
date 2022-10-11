@@ -1,11 +1,11 @@
 <div>
   <%= f.label :start_weight %>
-  <%= f.collection_select :start_weight, @price_per_weight.weight_list(@transport_type.id), :to_s, :to_s, include_blank: false %>
+  <%= f.number_field :start_weight %>
 </div>
 
 <div>
   <%= f.label :end_weight %>
-  <%= f.collection_select :end_weight, [], :to_s, :to_s, { include_blank: false }, { data: { list: @transport_type.price_per_weights.order(:start_weight).map{ |p| [p.start_weight, p.end_weight] } } } %>
+  <%= f.number_field :end_weight %>
 </div>  
 
 <div>

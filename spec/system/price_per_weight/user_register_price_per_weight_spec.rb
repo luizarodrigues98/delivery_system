@@ -61,7 +61,7 @@ describe "Usuário cadastra uma configuração de preço por peso" do
     end    
     click_on transport_type.name
     click_on 'Cadastrar Preço por Peso'
-
+    
     fill_in 'Peso Inicial',	with: 5
     fill_in 'Peso Final',	with: nil
     fill_in 'Taxa',	with: nil  
