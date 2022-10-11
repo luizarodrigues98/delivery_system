@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Usuário cadastra uma configuração de preço por distância" do
+describe "Usuário cadastra uma configuração de prazo" do
 
 
   it 'a partir da tela de show de modalidade de transporte' do
@@ -15,11 +15,11 @@ describe "Usuário cadastra uma configuração de preço por distância" do
       click_on 'Modalidade de Transporte'
     end    
     click_on transport_type.name
-    click_on 'Cadastrar Preço por Distância'
+    click_on 'Cadastrar Configuração de Prazo'
     #assert
     expect(page).to have_field('Distância Inicial') 
     expect(page).to have_field('Distância Final')
-    expect(page).to have_field('Taxa por Km')
+    expect(page).to have_field('Horas')
 
 
   end
@@ -35,17 +35,17 @@ describe "Usuário cadastra uma configuração de preço por distância" do
       click_on 'Modalidade de Transporte'
     end    
     click_on transport_type.name
-    click_on 'Cadastrar Preço por Distância'
+    click_on 'Cadastrar Configuração de Prazo'
 
     fill_in 'Distância Inicial',	with: 5
     fill_in 'Distância Final',	with: 25
-    fill_in 'Taxa por Km',	with: 10  
+    fill_in 'Horas',	with: 10  
  
     click_on 'Enviar'
     #assert
     expect(current_path).to  eq transport_type_path(transport_type.id)
     expect(page).to have_content 'Cadastrado com sucesso' 
-    expect(page).to have_content 'Valor por Km' 
+    expect(page).to have_content '10h' 
     expect(page).to have_content '5Km - 25Km'
   end
 
@@ -60,11 +60,11 @@ describe "Usuário cadastra uma configuração de preço por distância" do
       click_on 'Modalidade de Transporte'
     end    
     click_on transport_type.name
-    click_on 'Cadastrar Preço por Distância'
+    click_on 'Cadastrar Configuração de Prazo'
 
     fill_in 'Distância Inicial',	with: 5
     fill_in 'Distância Final',	with: nil
-    fill_in 'Taxa por Km',	with: nil  
+    fill_in 'Horas',	with: 2
  
     click_on 'Enviar'
     #assert

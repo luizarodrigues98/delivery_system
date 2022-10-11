@@ -9,6 +9,7 @@ class TransportTypesController < ApplicationController
   def show
     @price_per_weights = @transport_type.price_per_weights.order(:start_weight)
     @price_per_distances = @transport_type.price_per_distances.order(:start_distance)
+    @arrival_times = @transport_type.arrival_time_configs.order(:start_distance)
   end
 
   def new

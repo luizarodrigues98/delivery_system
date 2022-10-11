@@ -18,7 +18,6 @@
     <%= button_to "Desativar", deactivate_transport_type_path(@transport_type.id)%>
   <% end %>
   <br/>
-  <%= link_to "Cadastrar Configuração de Prazo", new_transport_type_arrival_time_config_path(@transport_type.id) %>
 <% end %>
 <br/>
 <h3> Taxas por peso </h3> 
@@ -74,5 +73,31 @@
     <%end%>  
   </div>
 </div>
+<br/>
 
-	
+<h3> Prazos de Entrega </h3> 
+<div class="row" id="prazo">
+  <div class="col-md-3">
+    <table style="width: 100%" >
+      <tr>
+        <th style="width: 40%">Intervalo</th>
+        <th style="width: 40%">Horas</th>
+        <th style="width: 20%"></th>
+      </tr>
+      <% @arrival_times.each do |arrival|%>
+        <tr>
+          <td><%= "#{arrival.start_distance}Km - #{arrival.end_distance}Km" %></td>
+          <td><%= "#{arrival.hours}h " %> </td>
+          <td>
+            <% if current_user.is_admin? %>
+              <%= button_to("Excluir", transport_type_arrival_time_config_path(@transport_type.id, arrival), method: :delete) %> 
+            <%end%>  
+          </td>
+        </tr> 
+      <%end%> 
+    </table>
+    <% if current_user.is_admin? %>
+      <%= link_to "Cadastrar Configuração de Prazo", new_transport_type_arrival_time_config_path(@transport_type.id) %>
+    <%end%>  
+  </div>
+</div>

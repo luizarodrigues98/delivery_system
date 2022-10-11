@@ -64,12 +64,11 @@ describe "Usuário cadastra uma configuração de preço por peso" do
     
     fill_in 'Peso Inicial',	with: 5
     fill_in 'Peso Final',	with: nil
-    fill_in 'Taxa',	with: nil  
+    fill_in 'Taxa por Km',	with: 2
  
     click_on 'Enviar'
     #assert
     expect(page).to have_content 'Peso Final não pode ficar em branco' 
-    expect(page).to have_content 'Taxa por Km não pode ficar em branco' 
   end
 end
  
