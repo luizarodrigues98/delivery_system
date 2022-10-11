@@ -50,6 +50,11 @@ class VehiclesController < ApplicationController
     end
   end
 
+  def search
+    @plate = params["query"]
+    @vehicles = Vehicle.where("plate like ?", "%#{@plate}%")
+  end
+
   def destroy
     @vehicle.destroy 
     redirect_to vehicles_path, notice: 'Veículo removido com sucesso'        

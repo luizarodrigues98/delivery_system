@@ -1,10 +1,15 @@
 pt-BR:
+  found: 
+      one: encontrado
+      other: encontrados
   active: Ativo
   allocated: Alocado
   maintenance: Em Manutenção
   activerecord:
     models:
-      vehicle: Veículo
+      vehicle: 
+        one: Veículo
+        other: Veículos
       price_per_weight: Preço por Peso
       user: Usuário
     attributes:

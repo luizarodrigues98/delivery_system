@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
   end
   resources :vehicles do
+    get 'search', on: :collection
     member do  
       post :active
       post :maintenance
