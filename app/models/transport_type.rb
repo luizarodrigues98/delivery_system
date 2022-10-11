@@ -1,6 +1,7 @@
 class TransportType < ApplicationRecord
   has_many :price_per_weights
   has_many :price_per_distances
+  has_many :arrival_time_configs
 
   validates :name, presence: true
   validates :max_distance, presence: true

@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   root to: "home#index"
   resources :transport_types  do
-    resources :price_per_weights, except: [:index, :show, :edit, :update]
-    resources :price_per_distances, except: [:index, :show, :edit, :update]
+    resources :price_per_weights, only: [:new, :create, :destroy]
+    resources :price_per_distances, only: [:new, :create, :destroy]
+    resources :arrival_time_configs, only: [:new, :create, :destroy]
     member do  
       post :deactivate
       post :activate
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
   end
   resources :vehicles do
     get 'search', on: :collection
-    member do  
+    member do
       post :active
       post :maintenance
     end
@@ -20,4 +21,6 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :users
   end
+
+
 end

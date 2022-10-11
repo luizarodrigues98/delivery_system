@@ -1,0 +1,28 @@
+<h2>Cadastrar Configuração de Prazo</h2>
+<%if(@arrival_time.errors.any?)%>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @arrival_time.errors.full_messages.each do |msg|%>
+      <li><%= msg %> </li>
+    <%end%>
+  </ul>
+<%end%>
+
+<%= form_with(model: @arrival_time, url: transport_type_arrival_time_configs_path(@transport_type.id) ) do |f| %>
+  <div>
+    <%= f.label :start_distance %>
+    <%= f.number_field :start_distance %>
+  </div>  
+  <div>
+    <%= f.label :end_distance %>
+    <%= f.number_field :end_distance %>
+  </div>  
+  
+  <div>
+    <%= f.label :hours %>
+    <%= f.number_field :hours %>
+  </div> 
+  <div>
+    <%= f.submit 'Enviar' %>
+  </div>
+<% end %>

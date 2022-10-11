@@ -12,6 +12,7 @@ pt-BR:
         other: Veículos
       price_per_weight: Preço por Peso
       user: Usuário
+      arrival_time_config: Prazo
     attributes:
       vehicle:
         plate: Placa
@@ -33,3 +34,8 @@ pt-BR:
         end_distance: Distância Final
         transport_type_id: Modalidade de Transporte
         rate: Taxa por Km
+      arrival_time_config:
+        start_distance: Distância Inicial
+        end_distance: Distância Final
+        transport_type_id: Modalidade de Transporte
+        hours: Horas

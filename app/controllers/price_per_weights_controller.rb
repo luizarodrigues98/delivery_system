@@ -29,11 +29,16 @@ class PricePerWeightsController < ApplicationController
 
   private
 
+  def sanitize_value_per_distance
+    params[:price_per_weight][:value_per_distance] = params[:price_per_weight][:value_per_distance].to_f * 100
+  end
+
   def set_price_weight
     @price_per_weight = PricePerWeight.find(params[:id])
   end
 
   def price_per_weight_params
+    sanitize_value_per_distance
     params.require(:price_per_weight).permit(:start_weight, :end_weight, :value_per_distance)
   end
 end

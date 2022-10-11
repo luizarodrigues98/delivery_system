@@ -29,11 +29,16 @@ class PricePerDistancesController < ApplicationController
 
   private
 
+  def sanitize_value_per_distance
+    params[:price_per_distance][:rate] = params[:price_per_distance][:rate].to_f * 100
+  end
+
   def set_price_distance
     @price_per_distance = PricePerDistance.find(params[:id])
   end
 
   def price_per_distance_params
+    sanitize_value_per_distance
     params.require(:price_per_distance).permit(:start_distance, :end_distance, :rate)
   end
 end

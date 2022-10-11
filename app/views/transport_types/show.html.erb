@@ -11,11 +11,14 @@
 <% if current_user.is_admin? %>
   <%= link_to('Editar', edit_transport_type_path(@transport_type.id)) %>
   <%= button_to('Excluir', transport_type_path(@transport_type.id), method: :delete) %>
+
   <% unless @transport_type.active %>
     <%= button_to "Ativar", activate_transport_type_path(@transport_type.id) %>
   <% else %>
     <%= button_to "Desativar", deactivate_transport_type_path(@transport_type.id)%>
   <% end %>
+  <br/>
+  <%= link_to "Cadastrar Configuração de Prazo", new_transport_type_arrival_time_config_path(@transport_type.id) %>
 <% end %>
 <br/>
 <h3> Taxas por peso </h3> 
@@ -30,7 +33,7 @@
       <% @price_per_weights.each do |price|%>
         <tr>
           <td><%= "#{price.start_weight}Kg - #{price.end_weight}kg" %></td>
-          <td><%= number_to_currency(price.value_per_distance, unit: "R$", separator: ",", delimiter: "") %> </td>
+          <td><%= number_to_currency(price.currency, unit: "R$", separator: ",", delimiter: "") %> </td>
           <td>
             <% if current_user.is_admin? %>
               <%= button_to("Excluir", transport_type_price_per_weight_path(@transport_type.id, price), method: :delete) %> 
@@ -57,7 +60,7 @@
       <% @price_per_distances.each do |price|%>
         <tr>
           <td><%= "#{price.start_distance}Km - #{price.end_distance}Km" %></td>
-          <td><%= number_to_currency(price.rate, unit: "R$", separator: ",", delimiter: "") %> </td>
+          <td><%= number_to_currency(price.currency, unit: "R$", separator: ",", delimiter: "") %> </td>
           <td>
             <% if current_user.is_admin? %>
               <%= button_to("Excluir", transport_type_price_per_distance_path(@transport_type.id, price), method: :delete) %> 
