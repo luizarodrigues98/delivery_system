@@ -1,0 +1,37 @@
+$(document).ready(function() {
+  var list = $('#price_per_weight_end_weight').data('list')
+  var end_weights = [];
+  var start = parseInt($('#price_per_weight_start_weight')[0].value)
+  if(start < list[0][0]) {
+    end_weights = [...Array(list[0][0]).keys()].filter(function(n) {
+      return (n > start) && ((n <= 100 && n % 10 == 0) || (n % 100 == 0))
+    })
+  } else {
+    end_weights = [...Array(1001).keys()].filter(function(n) {
+      return (n > start) && ((n <= 100 && n % 10 == 0) || (n % 100 == 0))
+    })
+  }
+
+  end_weights.forEach(function(value) {
+    $('#price_per_weight_end_weight').append($('<option />').val(value).text(value.toString()))
+  })
+
+  $('#price_per_weight_start_weight').change(function() {
+    var list = $('#price_per_weight_end_weight').data('list')
+    var end_weights = [];
+    var start = parseInt($('#price_per_weight_start_weight')[0].value)
+    if(start < list[0][0]) {
+      end_weights = [...Array(list[0][0]).keys()].filter(function(n) {
+        return (n > start) && ((n <= 100 && n % 10 == 0) || (n % 100 == 0))
+      })
+    } else {
+      end_weights = [...Array(1001).keys()].filter(function(n) {
+        return (n == 1000 || n > start) && ((n <= 100 && n % 10 == 0) || (n % 100 == 0))
+      })
+    }
+    $('#price_per_weight_end_weight').empty()
+    end_weights.forEach(function(value) {
+      $('#price_per_weight_end_weight').append($('<option />').val(value).text(value.toString()))
+    })
+  })
+})

@@ -16,8 +16,8 @@ ActiveStorage.start()
 require("@popperjs/core")
 
 import "bootstrap"
-
 import { Tooltip, Popover } from "bootstrap"
+import "./custom.js.erb"
 
 require("../stylesheets/application.scss")
 

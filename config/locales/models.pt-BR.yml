@@ -23,3 +23,8 @@ pt-BR:
       user:
         name: Nome
         email: E-mail
+      price_per_distance:
+        start_distance: Distância Inicial
+        end_distance: Distância Final
+        transport_type_id: Modalidade de Transporte
+        rate: Taxa por Km

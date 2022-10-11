@@ -1,0 +1,13 @@
+<h2>Cadastrar Configuração Preço por Distância</h2>
+<%if(@price_per_distance.errors.any?)%>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @price_per_distance.errors.full_messages.each do |msg|%>
+      <li><%= msg %> </li>
+    <%end%>
+  </ul>
+<%end%>
+
+<%= form_with(model: @price_per_distance, url: transport_type_price_per_distances_path(@transport_type.id) ) do |f| %> 
+  <%= render 'form', f: f %>
+<% end %>

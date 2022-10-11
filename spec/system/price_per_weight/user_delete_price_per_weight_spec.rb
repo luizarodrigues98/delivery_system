@@ -13,7 +13,7 @@ describe "Usuário remove uma configuração de preço por peso" do
       click_on 'Modalidade de Transporte'
     end
     click_on transport_type.name
-    within 'table' do
+    within 'div', id: 'weight' do
       click_on 'Excluir'
     end
     expect(current_path).to eq transport_type_path(transport_type.id)

@@ -9,20 +9,5 @@
 <%end%>
 
 <%= form_with(model: @price_per_weight, url: transport_type_price_per_weights_path(@transport_type.id)) do |f| %> 
-    <div>
-      <%= f.label :start_weight %>
-      <%= f.number_field :start_weight %>
-    </div>
-    <div>
-      <%= f.label :end_weight %>
-      <%= f.number_field :end_weight %>
-    </div>  
-    <div>
-      <%= f.label :value_per_distance %>
-      <%= f.number_field :value_per_distance %>  
-    </div>
-
-    <div>
-      <%= f.submit 'Enviar' %>
-    </div>
+  <%= render 'form', f: f %>
 <% end %>
