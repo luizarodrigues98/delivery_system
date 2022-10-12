@@ -13,7 +13,7 @@ describe "Usuário vê detalhes de um tipo de transporte" do
     click_on('Motocicleta')
     #ASSERT
     expect(page).to have_content('Distância Máxima: 20Km')
-    expect(page).to have_content('Taxa fixa: R$1000')
+    expect(page).to have_content('Taxa fixa: R$ 10,00')
 
   end
 
