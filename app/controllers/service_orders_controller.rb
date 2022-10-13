@@ -1,6 +1,6 @@
 class ServiceOrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_service_order, only: [:show, :destroy, :active, :edit, :update] 
+  before_action :set_service_order, only: [:show, :destroy, :initiate, :edit, :update, :delivered] 
   before_action :check_is_admin, except: [:index, :show]
 
   def index
@@ -50,6 +50,7 @@ class ServiceOrdersController < ApplicationController
   end
 
   def delivered
+    # if delivered for antes do arrival_time == delivered_on_time
     @service_order.update(status:  'delivered_on_time')
     redirect_to service_order_path(@service_order), notice: 'Status da ordem de serviço: entregue'
   end

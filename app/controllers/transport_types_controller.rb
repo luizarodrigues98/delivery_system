@@ -54,10 +54,14 @@ class TransportTypesController < ApplicationController
   end
 
   private
+  def sanitize_fixed_rate
+    params[:transport_type][:fixed_rate] = params[:transport_type][:fixed_rate].to_f * 100
+  end
   def set_transport_type
     @transport_type = TransportType.find(params[:id])
   end
   def transport_type_params
+    sanitize_fixed_rate
     params.require(:transport_type).permit(:name, :min_distance, :max_distance, :min_weight, :max_weight , :fixed_rate, :active)
   end
 end

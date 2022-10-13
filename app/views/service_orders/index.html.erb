@@ -4,14 +4,12 @@
 <% @service_orders.each do |t|%>
   <div>
     <ul>
-      <li>  <%= link_to t.recipient_address, service_order_path(t.id) %> </li>
+      <li>  <%= link_to t.tracking_code, service_order_path(t.id) %> </li>
+      <p> Endereço de coleta: <%= t.address %> </p>
+      <p> Endereço do Destinatário: <%= t.recipient_address %> </p>
+      <p> Distância total: <%= t.total_distance%>Km </p>
     </ul>
-  </div>
-  <div>
-    <p> Endereço: <%= t.address %> </p>
-    <p> Distância total: <%= t.total_distance%>Km </p>
-    <p> Prazo de Entrega: <%= t.arrival_time%>h </p>
-  </div>
+  </div>    
 <%end%>
 <div>
   <%if current_user.is_admin? %>

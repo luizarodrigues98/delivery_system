@@ -1,11 +1,9 @@
-<h2> Ordem de Serviço - <%= @service_order.recipient_address %> </h2> 
+<h2> Ordem de Serviço: <%= @service_order.tracking_code %> </h2> 
 <div>
   <ul>
     <li><strong>Endereço de coleta: </strong><%=  @service_order.address  %></li>
     <li><strong>Dimensões: </strong><%= @service_order.dimensions %></li>
-    <li><strong>Valor Total: </strong><%= number_to_currency(@service_order.currency, unit: "R$", separator: ",", delimiter: "") %></li>
     <li><strong>SKU: </strong><%= @service_order.sku %> </li>
-    <li><strong>Prazo de Entrega: </strong><%= @service_order.arrival_time %>h </li>
     <li><strong> Destinatário: </strong><%= @service_order.recipient %> </li>
     <li><strong> Endereço do Destinatário: </strong><%= @service_order.recipient_address %> </li>
     <li><strong> Status: </strong><%= t(@service_order.status) %> </li>
@@ -15,10 +13,11 @@
 <% if current_user.is_admin? %>
   <%= link_to('Editar', edit_service_order_path(@service_order.id)) %>
   <%= button_to('Excluir', service_order_path(@service_order.id), method: :delete, data: {confirm: "Deseja realmente excluir essa ordem de serviço?"}) %>
-
-  <% if @service_order.status == 'pending' %>
-      <%= button_to "Iniciar ordem de serviço", initiate_service_order_path(@service_order.id)  %>
-  <% end %>
   <br/>
 <% end %>
 <br/>
+<% if @service_order.status == 'pending' %>
+  <%= button_to "Iniciar ordem de serviço", initiate_service_order_path(@service_order.id)  %>
+<%elsif @service_order.status == 'in_delivery' %>
+  <%= button_to "Entregue", delivered_service_order_path(@service_order.id)  %>
+<% end %>
