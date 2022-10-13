@@ -5,6 +5,10 @@ pt-BR:
   active: Ativo
   allocated: Alocado
   maintenance: Em Manutenção
+  pending: Pendente
+  in_delivery: Em entrega
+  delivered_on_time: Entregue no prazo
+  delivered_with_delay: Entregue com atraso
   activerecord:
     models:
       vehicle: 
@@ -41,12 +45,12 @@ pt-BR:
         transport_type_id: Modalidade de Transporte
         hours: Horas
       service_order:
-        address: Endereço
+        address: Endereço de coleta
         dimensions: Dimensões
         sku: SKU
         weight: Peso
-        recipient: Remetente
-        recipient_address: Endereço do Remetente
+        recipient: Nome do Destinatário
+        recipient_address: Endereço do Destinatário
         status: Status
         total_distance: Distância Total
         arrival_time: Tempo de Entrega

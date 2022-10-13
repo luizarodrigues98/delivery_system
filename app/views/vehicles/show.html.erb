@@ -5,7 +5,7 @@
   <p> Modelo: <%=@vehicle.model%></p>
   <p> Capacidade Máxima: <%=@vehicle.max_weight%>Kg</p>
   <p> Ano de Fabricação: <%=@vehicle.fabrication_year%></p>
-  <p>Status: <%=  I18n.translate(@vehicle.status)%></p>
+  <p>Status: <%= t(@vehicle.status)%></p>
   
 </div>
 

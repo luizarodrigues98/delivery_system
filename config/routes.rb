@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   end
   resources :service_orders do
     member do
-      post :pending 
-      post :active 
+      post :delivered 
+      post :initiate 
     end
   end
 

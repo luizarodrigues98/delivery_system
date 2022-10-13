@@ -23,7 +23,5 @@ describe "Usuário edita uma Ordem de Serviço" do
     #assert
     expect(page).to have_content('Distância Total: 40')
     expect(page).to have_content('Status: ativo')
-
-
   end
 end

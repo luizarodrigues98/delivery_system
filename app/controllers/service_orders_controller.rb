@@ -6,20 +6,18 @@ class ServiceOrdersController < ApplicationController
   def index
     @service_orders = ServiceOrder.all
   end
-  def show
-    
-  end
+
+  def show; end
+
   def new
     @service_order = ServiceOrder.new
     @transport_types = TransportType.all
-    @vehicles = Vehicle.all
   
   end
 
   def create
     @transport_types = TransportType.all
-    @vehicles = Vehicle.all
-    @service_order =ServiceOrder.new(service_order_params)
+    @service_order = ServiceOrder.new(service_order_params)
     if @service_order.save
       redirect_to service_order_path(@service_order), notice: 'Ordem de serviço cadastrada com sucesso'
     else
@@ -27,38 +25,49 @@ class ServiceOrdersController < ApplicationController
       render 'new'
     end
   end
+
   def destroy
-    @service.destroy
+    @service_order.destroy
     redirect_to service_orders_path, notice: 'Ordem de serviço deletado com sucesso'
   end
+
   def edit
     @transport_types = TransportType.all
-    @vehicles = Vehicle.all
-  
   end
+
   def update
     @transport_types = TransportType.all
-    @vehicles = Vehicle.all
-    if @service.update(service_order_params)
-      redirect_to service_order_path(@service.id), notice: 'Ordem de serviço atualizada'
+    if @service_order.update(service_order_params)
+      redirect_to service_order_path(@service_order.id), notice: 'Ordem de serviço atualizada'
     else
       flash.now[:notice] = 'Não foi possível atualizar'
     end
   end
-  def active
-    @service.update(status ==  'Ativo')
-    redirect_to service_order_path(@service_order), notice: 'Status da ordem de serviço: ativado'
+
+  def initiate
+    @service_order.update(status:  'in_delivery')
+    redirect_to service_order_path(@service_order), notice: 'Status da ordem de serviço: em entrega'
+  end
+
+  def delivered
+    @service_order.update(status:  'delivered_on_time')
+    redirect_to service_order_path(@service_order), notice: 'Status da ordem de serviço: entregue'
   end
 
   private
+
+  def sanitize_total_value
+    params[:service_order][:total_value] = params[:service_order][:total_value].to_f * 100
+  end
   def set_service_order
-    @service = ServiceOrder.find(params[:id])
+    @service_order = ServiceOrder.find(params[:id])
   end
 
   def service_order_params
-    params.require(:service_order).permit(:address, :dimensions, :weight, :recipient, :status, 
-                                          :recipient_address, :sku, :total_distance, :arrival_time,
-                                          :total_value, :delivered_at, :transport_type_id, :vehicle_id, :reason)
+    sanitize_total_value
+    params.require(:service_order).permit(:address, :dimensions, :weight, :recipient, 
+                                          :recipient_address, :sku, :total_distance,
+                                          :transport_type_id, :reason)
 
   end
 end

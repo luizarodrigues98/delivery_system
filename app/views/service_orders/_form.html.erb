@@ -1,0 +1,38 @@
+<div>
+  <%= f.label :address %>
+  <%= f.text_field :address%>
+</div>  
+<div>
+  <%= f.label :dimensions %>
+  <%= f.text_field :dimensions %>
+</div>
+<div>
+  <%= f.label :sku %>
+  <%= f.text_field :sku%>
+</div>  
+<div>
+  <%= f.label :weight %>
+  <%= f.number_field :weight%>  
+</div>
+  <div>
+  <%= f.label :recipient %>
+  <%= f.text_field :recipient %>
+</div>  
+<div>
+  <%= f.label :recipient_address %>
+  <%= f.text_field :recipient_address %>
+</div>    
+
+<div>
+  <%= f.label :total_distance %>
+  <%= f.number_field :total_distance %>
+</div> 
+
+<div>
+  <%= f.label :transport_type_id %>
+  <%= f.collection_select :transport_type_id, @transport_types, :id, :name %>
+</div>
+
+<div>
+  <%= f.submit 'Enviar' %>
+</div>

@@ -43,21 +43,21 @@ ActiveRecord::Schema.define(version: 2022_10_12_143719) do
   end
 
   create_table "service_orders", force: :cascade do |t|
-    t.string "address"
-    t.string "sku"
-    t.string "dimensions"
-    t.integer "weight"
-    t.string "recipient"
-    t.string "recipient_address"
-    t.string "status"
+    t.string "address", null: false
+    t.string "sku", null: false
+    t.string "dimensions", null: false
+    t.integer "weight", null: false
+    t.string "recipient", null: false
+    t.string "recipient_address", null: false
+    t.integer "status", default: 0, null: false
     t.string "tracking_code"
-    t.integer "total_distance"
+    t.integer "total_distance", null: false
     t.integer "arrival_time"
     t.integer "total_value"
     t.integer "reason"
     t.datetime "delivered_at"
     t.integer "transport_type_id", null: false
-    t.integer "vehicle_id", null: false
+    t.integer "vehicle_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["transport_type_id"], name: "index_service_orders_on_transport_type_id"

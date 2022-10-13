@@ -1,25 +1,23 @@
-<h2> Ordem de Serviço - <%= @service.recipient_address %> </h2> 
+<h2> Ordem de Serviço - <%= @service_order.recipient_address %> </h2> 
 <div>
   <ul>
-    <li><strong>Endereço: </strong><%=  @service.address  %></li>
-    <li><strong>Dimensões: </strong><%= @service.dimensions %></li>
-    <li><strong>Valor Total: </strong><%= number_to_currency(@service.currency, unit: "R$", separator: ",", delimiter: "") %></li>
-    <li><strong>SKU: </strong><%= @service.sku %> </li>
-    <li><strong>Prazo de Entrega: </strong><%= @service.arrival_time %> </li>
-    <li><strong> Remetente: </strong><%= @service.recipient %> </li>
-    <li><strong> Endereço do Remetente: </strong><%= @service.recipient_address %> </li>
-    <li><strong> Status: </strong><%= @service.status %> </li>
-    <li><strong> Distância Total: </strong><%= @service.total_distance %> </li>
+    <li><strong>Endereço de coleta: </strong><%=  @service_order.address  %></li>
+    <li><strong>Dimensões: </strong><%= @service_order.dimensions %></li>
+    <li><strong>Valor Total: </strong><%= number_to_currency(@service_order.currency, unit: "R$", separator: ",", delimiter: "") %></li>
+    <li><strong>SKU: </strong><%= @service_order.sku %> </li>
+    <li><strong>Prazo de Entrega: </strong><%= @service_order.arrival_time %>h </li>
+    <li><strong> Destinatário: </strong><%= @service_order.recipient %> </li>
+    <li><strong> Endereço do Destinatário: </strong><%= @service_order.recipient_address %> </li>
+    <li><strong> Status: </strong><%= t(@service_order.status) %> </li>
+    <li><strong> Distância Total: </strong><%= @service_order.total_distance %>Km </li>
   </ul>  
 </div>
 <% if current_user.is_admin? %>
-  <%= link_to('Editar', edit_service_order_path(@service.id)) %>
-  <%= button_to('Excluir', service_order_path(@service.id), method: :delete, data: {confirm: "Deseja realmente excluir essa ordem de serviço?"}) %>
+  <%= link_to('Editar', edit_service_order_path(@service_order.id)) %>
+  <%= button_to('Excluir', service_order_path(@service_order.id), method: :delete, data: {confirm: "Deseja realmente excluir essa ordem de serviço?"}) %>
 
-  <% if @service.status == 'Ativo' %>
-      <%= button_to "Pendente", pending_service_order_path(@service.id)  %>
-  <% else %>
-      <%= button_to "Ativo", active_service_order_path(@service.id)  %>
+  <% if @service_order.status == 'pending' %>
+      <%= button_to "Iniciar ordem de serviço", initiate_service_order_path(@service_order.id)  %>
   <% end %>
   <br/>
 <% end %>
