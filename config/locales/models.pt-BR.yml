@@ -13,6 +13,7 @@ pt-BR:
       price_per_weight: Preço por Peso
       user: Usuário
       arrival_time_config: Prazo
+      service_order: Ordem de Serviço
     attributes:
       vehicle:
         plate: Placa
@@ -39,3 +40,18 @@ pt-BR:
         end_distance: Distância Final
         transport_type_id: Modalidade de Transporte
         hours: Horas
+      service_order:
+        address: Endereço
+        dimensions: Dimensões
+        sku: SKU
+        weight: Peso
+        recipient: Remetente
+        recipient_address: Endereço do Remetente
+        status: Status
+        total_distance: Distância Total
+        arrival_time: Tempo de Entrega
+        total_value: Valor Total
+        transport_type_id: Modalidade de Transporte
+        vehicle_id: Veículo
+
+

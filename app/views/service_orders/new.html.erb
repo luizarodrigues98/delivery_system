@@ -1,0 +1,65 @@
+<h2>Cadastrar Ordem de Serviço</h2>
+<%if(@service_order.errors.any?)%>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @service_order.errors.full_messages.each do |msg|%>
+      <li><%= msg %> </li>
+    <%end%>
+  </ul>
+<%end%>
+
+<%= form_with(model: @service_order ) do |f| %>
+  <div>
+      <%= f.label :address %>
+      <%= f.text_field :address%>
+    </div>  
+    <div>
+      <%= f.label :dimensions %>
+      <%= f.text_field :dimensions %>
+    </div>
+    <div>
+      <%= f.label :sku %>
+      <%= f.text_field :sku%>
+    </div>  
+    <div>
+      <%= f.label :weight %>
+      <%= f.number_field :weight%>  
+    </div>
+      <div>
+      <%= f.label :recipient %>
+      <%= f.text_field :recipient %>
+    </div>  
+    <div>
+      <%= f.label :recipient_address %>
+      <%= f.text_field :recipient_address %>
+    </div>    
+    <div>
+      <%= f.label :status %>
+      <%= f.text_field :status %>
+    </div>
+
+    <div>
+      <%= f.label :total_distance %>
+      <%= f.number_field :total_distance %>
+    </div> 
+
+    <div>
+      <%= f.label :arrival_time %>
+      <%= f.number_field :arrival_time %>
+    </div> 
+    <div>
+      <%= f.label :total_value %>
+      <%= f.number_field :total_value %>
+    </div> 
+    <div>
+      <%= f.label :transport_type_id %>
+      <%= f.collection_select :transport_type_id, @transport_types, :id, :name %>
+    </div>
+        <div>
+      <%= f.label :vehicle_id %>
+      <%= f.collection_select :vehicle_id, @vehicles, :id, :plate %>
+    </div>
+    <div>
+      <%= f.submit 'Enviar' %>
+    </div>
+<% end %>

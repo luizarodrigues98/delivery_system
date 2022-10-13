@@ -41,7 +41,6 @@ describe "Usuário cadastra um veiculo" do
     select 'Carro' ,	from: "Tipo de transporte" 
     click_on 'Enviar'
     #assert
-    # expect(current_path).to eq vehicle_path(@vehicle.id) 
     expect(page).to have_content 'Veículo registrado com sucesso'
     expect(page).to have_content 'PXQ-889' 
     expect(page).to have_content 'Capacidade Máxima: 100Kg'
@@ -67,7 +66,6 @@ describe "Usuário cadastra um veiculo" do
     select 'Carro' ,	from: "Tipo de transporte" 
     click_on 'Enviar'
     #assert
-    # expect(current_path).to eq vehicle_path(@vehicle.id) 
     expect(page).to have_content 'Não foi possível registrar o veículo'
 
   end

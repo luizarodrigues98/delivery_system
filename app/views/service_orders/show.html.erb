@@ -1,0 +1,22 @@
+<h2> Ordem de Serviços - <%= @service.status %> </h2> 
+<div>
+  <ul>
+    <li><strong>Endereço: </strong><%=  @service.address  %>Km</li>
+    <li><strong>Dimensões: </strong><%= @service.dimensions %>Km</li>
+    <li><strong>Valor Total: </strong><%= number_to_currency(@service.currency, unit: "R$", separator: ",", delimiter: "") %></li>
+    <li><strong>SKU: </strong><%= @service.sku %>Kg </li>
+    <li><strong>Data de Entrega: </strong><%= @service.arrival_time %> </li>
+    <li><strong> Remetente: </strong><%= @service.recipient %> </li>
+    <li><strong> Endereço do Remetente: </strong><%= @service.recipient_address %> </li>
+  </ul>  
+</div>
+<% if current_user.is_admin? %>
+  <%= link_to('Editar', edit_service_order_path(@service.id)) %>
+  <%= button_to('Excluir', edit_service_order_path(@service.id), method: :delete) %>
+
+  <% unless @service.status %>
+  <% else %>
+  <% end %>
+  <br/>
+<% end %>
+<br/>

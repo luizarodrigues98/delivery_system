@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_11_153255) do
+ActiveRecord::Schema.define(version: 2022_10_12_143719) do
 
   create_table "arrival_time_configs", force: :cascade do |t|
     t.integer "start_distance", default: 0
@@ -40,6 +40,28 @@ ActiveRecord::Schema.define(version: 2022_10_11_153255) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["transport_type_id"], name: "index_price_per_weights_on_transport_type_id"
+  end
+
+  create_table "service_orders", force: :cascade do |t|
+    t.string "address"
+    t.string "sku"
+    t.string "dimensions"
+    t.integer "weight"
+    t.string "recipient"
+    t.string "recipient_address"
+    t.string "status"
+    t.string "tracking_code"
+    t.integer "total_distance"
+    t.integer "arrival_time"
+    t.integer "total_value"
+    t.integer "reason"
+    t.datetime "delivered_at"
+    t.integer "transport_type_id", null: false
+    t.integer "vehicle_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["transport_type_id"], name: "index_service_orders_on_transport_type_id"
+    t.index ["vehicle_id"], name: "index_service_orders_on_vehicle_id"
   end
 
   create_table "transport_types", force: :cascade do |t|
@@ -83,5 +105,7 @@ ActiveRecord::Schema.define(version: 2022_10_11_153255) do
   add_foreign_key "arrival_time_configs", "transport_types"
   add_foreign_key "price_per_distances", "transport_types"
   add_foreign_key "price_per_weights", "transport_types"
+  add_foreign_key "service_orders", "transport_types"
+  add_foreign_key "service_orders", "vehicles"
   add_foreign_key "vehicles", "transport_types"
 end
