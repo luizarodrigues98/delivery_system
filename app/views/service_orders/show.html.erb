@@ -9,6 +9,7 @@
     <li><strong> Remetente: </strong><%= @service.recipient %> </li>
     <li><strong> Endereço do Remetente: </strong><%= @service.recipient_address %> </li>
     <li><strong> Status: </strong><%= @service.status %> </li>
+    <li><strong> Distância Total: </strong><%= @service.total_distance %> </li>
   </ul>  
 </div>
 <% if current_user.is_admin? %>
