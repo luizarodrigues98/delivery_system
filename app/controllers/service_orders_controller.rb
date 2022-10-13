@@ -29,6 +29,7 @@ class ServiceOrdersController < ApplicationController
   end
   def destroy
     @service.destroy
+    redirect_to service_orders_path, notice: 'Ordem de serviço deletado com sucesso'
   end
   private
   def set_service_order
