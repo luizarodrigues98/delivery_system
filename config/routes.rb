@@ -21,6 +21,11 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :users
   end
-  resources :service_orders
+  resources :service_orders do
+    member do
+      post :pending 
+      post :active 
+    end
+  end
 
 end

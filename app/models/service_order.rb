@@ -11,7 +11,8 @@ class ServiceOrder < ApplicationRecord
   validates :total_distance, presence: true
   validates :arrival_time, presence: true
   validates :total_value, presence: true
-  
+    
+
   def currency
     self.total_value / 100.0
   end

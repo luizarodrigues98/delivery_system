@@ -8,14 +8,17 @@
     <li><strong>Prazo de Entrega: </strong><%= @service.arrival_time %> </li>
     <li><strong> Remetente: </strong><%= @service.recipient %> </li>
     <li><strong> Endereço do Remetente: </strong><%= @service.recipient_address %> </li>
+    <li><strong> Status: </strong><%= @service.status %> </li>
   </ul>  
 </div>
 <% if current_user.is_admin? %>
   <%= link_to('Editar', edit_service_order_path(@service.id)) %>
   <%= button_to('Excluir', service_order_path(@service.id), method: :delete, data: {confirm: "Deseja realmente excluir essa ordem de serviço?"}) %>
 
-  <% unless @service.status %>
+  <% if @service.status == 'Ativo' %>
+      <%= button_to "Pendente", pending_service_order_path(@service.id)  %>
   <% else %>
+      <%= button_to "Ativo", active_service_order_path(@service.id)  %>
   <% end %>
   <br/>
 <% end %>
