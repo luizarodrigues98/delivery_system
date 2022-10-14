@@ -26,6 +26,11 @@ Rails.application.routes.draw do
       post :delivered 
       post :initiate 
     end
+    collection do
+      get :pending
+      get :in_delivery
+      get :finished
+    end
   end
 
 end

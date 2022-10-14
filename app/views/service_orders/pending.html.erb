@@ -1,0 +1,17 @@
+<h3> Ordens de Serviço</h3> 
+
+<% @service_orders.each do |t|%>
+  <div>
+    <ul>
+      <li>  <%= link_to t.tracking_code, service_order_path(t.id) %> </li>
+      <p> Endereço de coleta: <%= t.address %> </p>
+      <p> Endereço do Destinatário: <%= t.recipient_address %> </p>
+      <p> Distância total: <%= t.total_distance%>Km </p>
+    </ul>
+  </div>    
+<%end%>
+<div>
+  <%if current_user.is_admin? %>
+    <%= link_to "Cadastrar Ordem de Serviço", new_service_order_url %>
+  <%end%>
+</div>

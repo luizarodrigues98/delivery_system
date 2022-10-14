@@ -15,7 +15,7 @@ class TransportType < ApplicationRecord
   scope :active, -> { where(active: true) }
   scope :for_service_order, ->(total_distance, weight) do
     where("min_distance <= #{total_distance} AND max_distance >= #{total_distance} AND min_weight <= #{weight} AND max_weight >= #{weight}").
-    select{ |t| t.vehicles.count > 0 }
+    select{ |t| t.vehicles.active.count > 0 }
   end
 
   def currency

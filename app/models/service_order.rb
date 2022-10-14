@@ -14,7 +14,7 @@ class ServiceOrder < ApplicationRecord
   enum status: { pending: 0, in_delivery: 1, delivered_on_time: 2, delivered_with_delay: 3 }
 
   def currency
-    self.total_value / 100.0
+    self.total_value.nil? ? 0 : self.total_value / 100.0
   end
   
   def calculate_value(transport_type_id)

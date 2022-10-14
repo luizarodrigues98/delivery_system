@@ -33,8 +33,15 @@
               Ordem de Serviços
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Pendentes</a></li>
-              <li><a class="dropdown-item" href="#">Ativas</a></li>
+              <li>
+                <%= link_to "Pendentes", pending_service_orders_path, class:"dropdown-item" %>
+              </li>
+              <li>
+                <%= link_to "Ativas", in_delivery_service_orders_path, class:"dropdown-item" %>
+              </li>
+              <li>
+                <%= link_to "Entregues", finished_service_orders_path, class:"dropdown-item" %>
+              </li>
               <li><hr class="dropdown-divider"></li>
               <li>
                 <%= link_to "Ver Todas", service_orders_path , class:"dropdown-item" %>

@@ -8,6 +8,8 @@
     <li><strong> Endereço do Destinatário: </strong><%= @service_order.recipient_address %> </li>
     <li><strong> Status: </strong><%= t(@service_order.status) %> </li>
     <li><strong> Distância Total: </strong><%= @service_order.total_distance %>Km </li>
+    <li><strong> Veículo nessa rota: </strong><%= @service_order.vehicle.to_s %></li>
+  
   </ul>  
 </div>
 <div>
@@ -21,17 +23,23 @@
   <%= form_with url: initiate_service_order_path(@service_order.id), method: :post do |f| %>
     <h3> Taxas por Modalidade de Transporte </h3> 
     <div class="row" id="weight">
-      <div class="col-md-3">
+      <div class="col-md-4">
         <table style="width: 100%" >
           <tr>
-            <th style="width: 50%">Modalidade</th>
-            <th style="width: 40%">Valor Total</th>
+            <th style="width: 40%">Modalidade</th>
+            <th style="width: 30%">Valor Total</th>
+            <th style="width: 20%">Prazo </th>
             <th style="width: 10%"></th>
           </tr>
           <% @transport_types.each do |t| %>
             <tr>
               <td><%= t.name %></td>
-              <td><%= number_to_currency(@service_order.calculate_value(t.id)/100.0, unit: "R$", separator: ",", delimiter: "")%></td>
+              <td>
+                <% total_value = @service_order.calculate_value(t.id) %>
+                <%= number_to_currency(total_value /100.0, unit: "R$", separator: ",", delimiter: "")%>
+                <%= f.number_field :total_value, step: :any, value: total_value, type: :hidden %>
+              </td>
+              <td><%= t.arrival_time_configs.where("start_distance <= ? AND end_distance >= ?", @service_order.total_distance, @service_order.total_distance).first.hours %>h </td>
               <td><%= f.radio_button :transport_type_id, t.id %></td>
             </tr>
           <%end%>
