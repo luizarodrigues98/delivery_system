@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_12_143719) do
+ActiveRecord::Schema.define(version: 2022_10_14_160424) do
 
   create_table "arrival_time_configs", force: :cascade do |t|
     t.integer "start_distance", default: 0
@@ -90,15 +90,15 @@ ActiveRecord::Schema.define(version: 2022_10_12_143719) do
   end
 
   create_table "vehicles", force: :cascade do |t|
-    t.string "plate", default: "xxx-000", null: false
-    t.string "brand", default: "Toyota", null: false
-    t.string "model", default: "Etios", null: false
     t.integer "status", default: 0, null: false
     t.integer "max_weight", default: 0, null: false
     t.integer "fabrication_year", default: 0, null: false
     t.integer "transport_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "plate"
+    t.string "brand"
+    t.string "model"
     t.index ["transport_type_id"], name: "index_vehicles_on_transport_type_id"
   end
 
