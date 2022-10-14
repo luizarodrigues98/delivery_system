@@ -13,7 +13,7 @@ describe "Usuário remove uma ordem de serviço" do
     visit root_path
     click_on 'Ordem de Serviços'
     click_on 'Ver Todas'
-    click_on 'rua cruzeiro do sul, 714'
+    click_on service.tracking_code
     click_on 'Excluir'
     expect(current_path).to eq service_orders_path
     expect(page).to have_content 'Ordem de serviço deletado com sucesso'
@@ -33,7 +33,7 @@ describe "Usuário remove uma ordem de serviço" do
     visit root_path
     click_on 'Ordem de Serviços'
     click_on 'Ver Todas'
-    click_on 'rua cruzeiro do sul, 714'
+    click_on service.tracking_code
     click_on 'Excluir'
     expect(current_path).to eq service_orders_path
     expect(page).to have_content 'Ordem de serviço deletado com sucesso'

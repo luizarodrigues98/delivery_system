@@ -17,7 +17,7 @@ describe "Usuário edita uma modalidade de transporte" do
     #assert
     expect(page).to have_content 'Editar Modalidade de Transporte'
     expect(page).to have_field('Distância Mínima', with: 2)
-    expect(page).to have_field('Taxa fixa', with: 1000)
+    expect(page).to have_field('Taxa fixa', with: 10.00)
 
   end
   it 'com sucesso' do
@@ -33,7 +33,7 @@ describe "Usuário edita uma modalidade de transporte" do
     click_on 'Editar'
     fill_in "Nome",	with: "Moto"
     fill_in "Distância Máxima",	with: 15
-    fill_in "Taxa fixa",	with: 500
+    fill_in "Taxa fixa",	with: 50
     
     click_on 'Enviar'
     expect(page).to have_content 'Modalidade de transporte atualizado com sucesso' 

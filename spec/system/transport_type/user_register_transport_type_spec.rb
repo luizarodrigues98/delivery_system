@@ -38,7 +38,6 @@ describe "Usuário cadastra uma modalidade de transporte" do
     fill_in 'Taxa fixa',	with: 1000  
     fill_in "Peso Mínimo",	with: 0 
     fill_in 'Peso Máximo',	with: 500
-    fill_in "Atividade",	with: "true"  
     click_on 'Enviar'
     #assert
     expect(current_path).to  eq transport_types_path 

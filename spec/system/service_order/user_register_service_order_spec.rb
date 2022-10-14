@@ -5,7 +5,7 @@ describe "Usuário cadastra uma Ordem de Serviço" do
 
   it 'a partir da tela inicial' do
     user = User.create!(name: 'Luiza', email: 'luiza@sistemadefrete.com.br', password: 'password', admin: true)
-    transport_type = TransportType.create!(name: 'Carro', min_distance: 2, max_distance: 200, min_weight: 0, max_weight: 100, fixed_rate: 1000, active: true
+    transport_type = TransportType.create!(name: 'Carro', min_distance: 2, max_distance: 200, min_weight: 0, max_weight: 100, fixed_rate: 1000, active: true)
     
     login_as(user)
     visit root_path
@@ -20,7 +20,6 @@ describe "Usuário cadastra uma Ordem de Serviço" do
     expect(page).to have_field('Nome do Destinatário')
     expect(page).to have_field('Endereço do Destinatário')
     expect(page).to have_field('Distância Total')
-    expect(page).to have_field('Modalidade de Transporte')
 
   end
 
@@ -40,7 +39,6 @@ describe "Usuário cadastra uma Ordem de Serviço" do
     fill_in "Nome do Destinatário",	with: "Maria José" 
     fill_in "Endereço do Destinatário",	with: "rua cruzeiro do sul, 714" 
     fill_in "Distância Total",	with: 20  
-    select 'Carro',	from: "Modalidade de Transporte" 
     click_on 'Enviar'
 
     expect(page).to have_content 'Ordem de serviço cadastrada com sucesso'
@@ -63,7 +61,6 @@ describe "Usuário cadastra uma Ordem de Serviço" do
     fill_in "Nome do Destinatário",	with: "Maria José" 
     fill_in "Endereço do Destinatário",	with: "rua cruzeiro do sul, 714" 
     fill_in "Distância Total",	with: nil  
-    select 'Carro',	from: "Modalidade de Transporte" 
     click_on 'Enviar'
 
     expect(page).to have_content 'Ordem de serviço não cadastrado'
