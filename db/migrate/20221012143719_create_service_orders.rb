@@ -14,7 +14,7 @@ class CreateServiceOrders < ActiveRecord::Migration[6.1]
       t.integer :total_value
       t.integer :reason
       t.datetime :delivered_at
-      t.references :transport_type, null: false, foreign_key: true
+      t.references :transport_type, foreign_key: true
       t.references :vehicle, foreign_key: true
 
       t.timestamps

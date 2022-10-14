@@ -7,16 +7,15 @@ class ServiceOrdersController < ApplicationController
     @service_orders = ServiceOrder.all
   end
 
-  def show; end
+  def show
+    @transport_types = TransportType.for_service_order(@service_order.total_distance, @service_order.weight)
+  end
 
   def new
     @service_order = ServiceOrder.new
-    @transport_types = TransportType.all
-  
   end
 
   def create
-    @transport_types = TransportType.all
     @service_order = ServiceOrder.new(service_order_params)
     if @service_order.save
       redirect_to service_order_path(@service_order), notice: 'Ordem de serviço cadastrada com sucesso'
@@ -31,12 +30,9 @@ class ServiceOrdersController < ApplicationController
     redirect_to service_orders_path, notice: 'Ordem de serviço deletado com sucesso'
   end
 
-  def edit
-    @transport_types = TransportType.all
-  end
+  def edit; end
 
   def update
-    @transport_types = TransportType.all
     if @service_order.update(service_order_params)
       redirect_to service_order_path(@service_order.id), notice: 'Ordem de serviço atualizada'
     else
@@ -45,7 +41,16 @@ class ServiceOrdersController < ApplicationController
   end
 
   def initiate
-    @service_order.update(status:  'in_delivery')
+    unless params.key?(:transport_type_id)
+      redirect_to service_order_path(@service_order), notice: 'Você deve selecionar uma Modalidade de Transporte!' 
+      return
+    end
+
+    transport_type = TransportType.find(params[:transport_type_id])
+    vehicle = transport_type.vehicles.active.where('max_weight >= ?', @service_order.weight).first
+    vehicle.update(status: 'allocated')
+    @service_order.update(status:  'in_delivery', transport_type_id: transport_type.id)
+
     redirect_to service_order_path(@service_order), notice: 'Status da ordem de serviço: em entrega'
   end
 

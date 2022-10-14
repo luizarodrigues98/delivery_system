@@ -10,14 +10,42 @@
     <li><strong> Distância Total: </strong><%= @service_order.total_distance %>Km </li>
   </ul>  
 </div>
-<% if current_user.is_admin? %>
-  <%= link_to('Editar', edit_service_order_path(@service_order.id)) %>
-  <%= button_to('Excluir', service_order_path(@service_order.id), method: :delete, data: {confirm: "Deseja realmente excluir essa ordem de serviço?"}) %>
+<div>
+  <% if current_user.is_admin? %>
+    <%= link_to('Editar', edit_service_order_path(@service_order.id)) %>
+    <%= button_to('Excluir', service_order_path(@service_order.id), method: :delete, data: {confirm: "Deseja realmente excluir essa ordem de serviço?"}) %>
   <br/>
+  <% end %>
+</div>
+<% if @service_order.status == 'pending' %>
+  <%= form_with url: initiate_service_order_path(@service_order.id), method: :post do |f| %>
+    <h3> Taxas por Modalidade de Transporte </h3> 
+    <div class="row" id="weight">
+      <div class="col-md-3">
+        <table style="width: 100%" >
+          <tr>
+            <th style="width: 50%">Modalidade</th>
+            <th style="width: 40%">Valor Total</th>
+            <th style="width: 10%"></th>
+          </tr>
+          <% @transport_types.each do |t| %>
+            <tr>
+              <td><%= t.name %></td>
+              <td><%= number_to_currency(@service_order.calculate_value(t.id)/100.0, unit: "R$", separator: ",", delimiter: "")%></td>
+              <td><%= f.radio_button :transport_type_id, t.id %></td>
+            </tr>
+          <%end%>
+        </table>
+      </div>
+    </div>
+    </br>
+    <%= button_to "Iniciar ordem de serviço", type: :submit %>
+  <% end %>
 <% end %>
 <br/>
-<% if @service_order.status == 'pending' %>
-  <%= button_to "Iniciar ordem de serviço", initiate_service_order_path(@service_order.id)  %>
-<%elsif @service_order.status == 'in_delivery' %>
+
+
+<%if @service_order.status == 'in_delivery' %>
   <%= button_to "Entregue", delivered_service_order_path(@service_order.id)  %>
 <% end %>
+

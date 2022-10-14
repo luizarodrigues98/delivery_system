@@ -28,10 +28,6 @@
   <%= f.number_field :total_distance %>
 </div> 
 
-<div>
-  <%= f.label :transport_type_id %>
-  <%= f.collection_select :transport_type_id, @transport_types, :id, :name %>
-</div>
 
 <div>
   <%= f.submit 'Enviar' %>

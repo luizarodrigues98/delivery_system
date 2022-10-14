@@ -22,12 +22,8 @@
     </div>  
     <div>
       <%= f.label :fixed_rate %>
-      <%= f.number_field :fixed_rate %>
+      <%= f.number_field :fixed_rate, step: :any, value: @transport_type.currency %>
     </div>
-    <div>
-      <%= f.label :active %>
-      <%= f.text_field :active %>
-    </div> 
     <div>
       <%= f.submit 'Enviar' %>
     </div>

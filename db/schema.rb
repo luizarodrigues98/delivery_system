@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2022_10_12_143719) do
     t.integer "total_value"
     t.integer "reason"
     t.datetime "delivered_at"
-    t.integer "transport_type_id", null: false
+    t.integer "transport_type_id"
     t.integer "vehicle_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
