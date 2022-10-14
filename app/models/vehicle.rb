@@ -9,4 +9,8 @@ class Vehicle < ApplicationRecord
 
   enum status: { active: 0, allocated: 1, maintenance: 2}
 
+  def to_s
+    "#{self.brand} #{self.model} - #{self.plate}"
+  end
+
 end

@@ -8,6 +8,7 @@ class VehiclesController < ApplicationController
   end
   
   def show
+    @transport_type = @vehicle.transport_type
   end
   
   def active

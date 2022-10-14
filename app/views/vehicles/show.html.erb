@@ -6,7 +6,10 @@
   <p> Capacidade Máxima: <%=@vehicle.max_weight%>Kg</p>
   <p> Ano de Fabricação: <%=@vehicle.fabrication_year%></p>
   <p>Status: <%= t(@vehicle.status)%></p>
-  
+  <p>Modalidade de Transporte: <%= link_to "#{@transport_type.name}", transport_type_path(@transport_type) %></p>
+  <% if @vehicle.allocated?%>
+    <p> Alocado na ordem de serviço:</p>
+  <%end%>
 </div>
 
 <div>
