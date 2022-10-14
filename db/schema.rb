@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_14_160424) do
+ActiveRecord::Schema.define(version: 2022_10_14_180144) do
 
   create_table "arrival_time_configs", force: :cascade do |t|
     t.integer "start_distance", default: 0
@@ -54,12 +54,13 @@ ActiveRecord::Schema.define(version: 2022_10_14_160424) do
     t.integer "total_distance", null: false
     t.integer "arrival_time"
     t.integer "total_value"
-    t.integer "reason"
     t.datetime "delivered_at"
     t.integer "transport_type_id"
     t.integer "vehicle_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "initiated_at"
+    t.string "reason"
     t.index ["transport_type_id"], name: "index_service_orders_on_transport_type_id"
     t.index ["vehicle_id"], name: "index_service_orders_on_vehicle_id"
   end

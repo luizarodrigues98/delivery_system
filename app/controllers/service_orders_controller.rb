@@ -21,6 +21,9 @@ class ServiceOrdersController < ApplicationController
 
   def show
     @transport_types = TransportType.for_service_order(@service_order.total_distance, @service_order.weight)
+    if @service_order.status == "in_delivery"
+      @delayed = (@service_order.initiated_at + @service_order.arrival_time.hours) < DateTime.now
+    end
   end
 
   def new
@@ -60,22 +63,29 @@ class ServiceOrdersController < ApplicationController
 
     transport_type = TransportType.find(params[:transport_type_id])
     vehicle = transport_type.vehicles.active.where('max_weight >= ?', @service_order.weight).first
-    vehicle.update(status: 'allocated')
+    vehicle.allocated!
     arrival_time_config = transport_type.arrival_time_configs.where("start_distance <= ? AND end_distance >= ?", @service_order.total_distance, @service_order.total_distance).first
 
     @service_order.update(status:  'in_delivery',
                           transport_type_id: transport_type.id, 
                           vehicle_id: vehicle.id, 
                           total_value: params[:total_value],
-                          arrival_time: arrival_time_config.hours)
+                          arrival_time: arrival_time_config.hours,
+                          initiated_at: DateTime.now)
 
-    redirect_to service_order_path(@service_order), notice: 'Status da ordem de serviço: em entrega'
+    redirect_to service_order_path(@service_order), notice: 'Status da ordem de serviço: Em entrega'
   end
 
   def delivered
-    # if delivered for antes do arrival_time == delivered_on_time
-    @service_order.update(status:  'delivered_on_time')
-    redirect_to service_order_path(@service_order), notice: 'Status da ordem de serviço: entregue'
+    @service_order.vehicle.active!
+    if (@service_order.initiated_at + @service_order.arrival_time.hours) > DateTime.now 
+      @service_order.update(status: 'delivered_on_time', delivered_at: DateTime.now)
+      redirect_to service_order_path(@service_order), notice: 'Status da ordem de serviço: Entregue no prazo'
+    else
+      @service_order.update(status: 'delivered_with_delay', delivered_at: DateTime.now, reason: params[:reason])
+      redirect_to service_order_path(@service_order), notice: 'Status da ordem de serviço: Entregue com atraso'
+    end
+
   end
 
   private
