@@ -9,6 +9,7 @@ class VehiclesController < ApplicationController
   
   def show
     @transport_type = @vehicle.transport_type
+    @service_order = @vehicle.service_order
   end
   
   def active

@@ -8,7 +8,7 @@
   <p>Status: <%= t(@vehicle.status)%></p>
   <p>Modalidade de Transporte: <%= link_to "#{@transport_type.name}", transport_type_path(@transport_type) %></p>
   <% if @vehicle.allocated?%>
-    <p> Alocado na ordem de serviço:</p>
+    <p> Alocado na ordem de serviço: <%= link_to @vehicle.service_order.tracking_code,  service_order_path(@service_order.id)%> </p>
   <%end%>
 </div>
 

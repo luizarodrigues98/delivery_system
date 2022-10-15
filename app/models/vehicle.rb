@@ -1,6 +1,6 @@
 class Vehicle < ApplicationRecord
   belongs_to :transport_type
-
+  has_one :service_order
   validates :plate, presence: true
   validates :brand, presence: true
   validates :model, presence: true
