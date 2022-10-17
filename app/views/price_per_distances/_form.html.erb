@@ -1,11 +1,15 @@
 <div>
   <%= f.label :start_distance %>
   <%= f.number_field :start_distance, class: "form-control" %>
+  <small class="form-text text-muted"><%= "Distância mínima: #{@transport_type.min_distance}Km"%></small>
 </div>
+<br/>
 <div>
   <%= f.label :end_distance %>
   <%= f.number_field :end_distance, class: "form-control" %>
+  <small class="form-text text-muted"><%= "Distância mínima: #{@transport_type.max_distance}Km"%></small>
 </div>  
+<br/>
 <div>
   <%= f.label :rate %>
   <%= f.number_field :rate, step: :any, class: "form-control" %>  

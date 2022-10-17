@@ -15,12 +15,14 @@
 <div>
   <%if current_user.is_admin? %>
     <% if @vehicle.maintenance?%>
-      <%= button_to "Ativar", active_vehicle_url(@vehicle.id)  %>
+      <%= button_to "Ativar", active_vehicle_url(@vehicle.id), class: 'btn btn-success'  %>
     <%elsif @vehicle.active?%>
-      <%= button_to "Em manutenção", maintenance_vehicle_url(@vehicle.id)  %>
+      <%= button_to "Em manutenção", maintenance_vehicle_url(@vehicle.id), class: 'btn btn-success'  %>
     <%end%>
-    <%= button_to("Excluir", vehicle_path(@vehicle.id), method: :delete)%>
-    <%= link_to "Editar", edit_vehicle_path(@vehicle.id) %>
+    <br/>
+    <%= button_to("Excluir", vehicle_path(@vehicle.id), method: :delete, class: 'btn btn-danger')%>
+    <br/>
+    <%= link_to "Editar", edit_vehicle_path(@vehicle.id), class: 'btn btn-light' %>
   <%end%>
 </div>
 

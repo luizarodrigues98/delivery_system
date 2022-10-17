@@ -9,20 +9,28 @@
   </ul>  
 </div>
 <% if current_user.is_admin? %>
-  <%= link_to('Editar', edit_transport_type_path(@transport_type.id)) %>
-  <%= button_to('Excluir', transport_type_path(@transport_type.id), method: :delete) %>
+  <div class="row">
+    <div class= "col-md-1">
+      <%= link_to('Editar', edit_transport_type_path(@transport_type.id), class:"btn btn-info") %>
+    </div>
+    <div class= "col-md-1">
+      <%= button_to('Excluir', transport_type_path(@transport_type.id), method: :delete, class:"btn btn-danger") %>
+    </div>
+    <div class= "col-md-1">
 
-  <% unless @transport_type.active %>
-    <%= button_to "Ativar", activate_transport_type_path(@transport_type.id) %>
-  <% else %>
-    <%= button_to "Desativar", deactivate_transport_type_path(@transport_type.id)%>
-  <% end %>
-  <br/>
+      <% unless @transport_type.active %>
+        <%= button_to "Ativar", activate_transport_type_path(@transport_type.id), class:"btn btn-success" %>
+      <% else %>
+        <%= button_to "Desativar", deactivate_transport_type_path(@transport_type.id), class:"btn btn-warning"%>
+      <% end %>
+      <br/>
+    </div>
+  </div>
 <% end %>
 <br/>
 <h3> Taxas por peso </h3> 
 <div class="row" id="weight">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <table style="width: 100%" >
       <tr>
         <th style="width: 40%">Intervalo</th>
@@ -35,7 +43,7 @@
           <td><%= number_to_currency(price.currency, unit: "R$", separator: ",", delimiter: "") %> </td>
           <td>
             <% if current_user.is_admin? %>
-              <%= button_to("Excluir", transport_type_price_per_weight_path(@transport_type.id, price), method: :delete) %> 
+              <%= button_to("Excluir", transport_type_price_per_weight_path(@transport_type.id, price), method: :delete, class:"btn btn-danger") %> 
             <%end%>  
           </td>
         </tr> 
@@ -49,7 +57,7 @@
 <br/>
 <h3> Taxas por Distância </h3> 
 <div class="row" id="distance">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <table style="width: 100%" >
       <tr>
         <th style="width: 40%">Intervalo</th>
@@ -62,7 +70,7 @@
           <td><%= number_to_currency(price.currency, unit: "R$", separator: ",", delimiter: "") %> </td>
           <td>
             <% if current_user.is_admin? %>
-              <%= button_to("Excluir", transport_type_price_per_distance_path(@transport_type.id, price), method: :delete) %> 
+              <%= button_to("Excluir", transport_type_price_per_distance_path(@transport_type.id, price), method: :delete, class:"btn btn-danger") %> 
             <%end%>  
           </td>
         </tr> 
@@ -77,7 +85,7 @@
 
 <h3> Prazos de Entrega </h3> 
 <div class="row" id="prazo">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <table style="width: 100%" >
       <tr>
         <th style="width: 40%">Intervalo</th>
@@ -90,7 +98,7 @@
           <td><%= "#{arrival.hours}h " %> </td>
           <td>
             <% if current_user.is_admin? %>
-              <%= button_to("Excluir", transport_type_arrival_time_config_path(@transport_type.id, arrival), method: :delete) %> 
+              <%= button_to("Excluir", transport_type_arrival_time_config_path(@transport_type.id, arrival), method: :delete, class:"btn btn-danger") %> 
             <%end%>  
           </td>
         </tr> 

@@ -11,8 +11,8 @@
 <div class="col-md-6">
   <%= form_with(url: search_vehicles_path, method: :get) do |f|%>
     <%= f.label :query, 'Buscar Veículo'%>
-    <%= f.text_field :query%>
-    <%= f.submit 'Buscar' %> 
+    <%= f.text_field :query, class:'form-control-sm'%>
+    <%= f.submit 'Buscar', class:'btn btn-success' %> 
   <%end%>
 </div>
 </br>
