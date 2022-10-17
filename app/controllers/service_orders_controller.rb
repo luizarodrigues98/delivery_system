@@ -52,6 +52,7 @@ class ServiceOrdersController < ApplicationController
       redirect_to service_order_path(@service_order.id), notice: 'Ordem de serviço atualizada'
     else
       flash.now[:notice] = 'Não foi possível atualizar'
+      render 'edit'
     end
   end
 
@@ -90,15 +91,12 @@ class ServiceOrdersController < ApplicationController
 
   private
 
-  def sanitize_total_value
-    params[:service_order][:total_value] = params[:service_order][:total_value].to_f * 100
-  end
+
   def set_service_order
     @service_order = ServiceOrder.find(params[:id])
   end
 
   def service_order_params
-    sanitize_total_value
     params.require(:service_order).permit(:address, :dimensions, :weight, :recipient, 
                                           :recipient_address, :sku, :total_distance,
                                           :transport_type_id, :reason)
