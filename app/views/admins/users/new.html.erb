@@ -1,14 +1,4 @@
 <h2>Novo Usuário</h2>
 <%= form_with(model: @user, url: admins_users_path) do |f| %>
-  <div>
-      <%= f.label :name %>
-      <%= f.text_field :name%>
-    </div>  
-    <div>
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-    </div>
-    <div>
-      <%= f.submit 'Enviar' %>
-    </div>
+  <% render "form", f:f %>
 <% end %>
