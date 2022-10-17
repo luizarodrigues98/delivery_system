@@ -23,7 +23,7 @@ describe 'Usuário visita tela inicial' do
     expect(page).to have_content "Destinatário: Maria José"
   end
 
-  it 'e preenche os campos com um código válido' do
+  it 'e preenche os campos com um código inválido' do
     user = User.create!(name: 'User', email:'user@sistemadefrete.com.br', password: 'password', admin: true)
     login_as(user)
     visit root_path
