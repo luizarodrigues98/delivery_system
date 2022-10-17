@@ -40,11 +40,19 @@ class TransportTypesController < ApplicationController
 
   def activate
     @transport_type.update(active: true)
+    transport_vehicles = @transport_type.vehicles.maintenance
+    transport_vehicles.each do |transport_vehicle|
+      transport_vehicle.update(status: 0)
+    end
     redirect_to transport_type_path(@transport_type.id), notice: 'Status da modalidade: ativado'
   end
 
   def deactivate
     @transport_type.update(active: false)
+    transport_vehicles = @transport_type.vehicles.active
+    transport_vehicles.each do |transport_vehicle|
+      transport_vehicle.update(status: 2)
+    end
     redirect_to transport_type_path(@transport_type.id), notice: 'Status da modalidade: desativado'
   end
 

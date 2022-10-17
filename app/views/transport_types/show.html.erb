@@ -106,7 +106,8 @@
       <%end%> 
     </table>
     <% if current_user.is_admin? %>
-      <%= link_to "Cadastrar Configuração de Prazo", new_transport_type_arrival_time_config_path(@transport_type.id) %>
+      <%= link_to "Cadastrar Configuração de Prazo", new_transport_type_arrival_time_config_path(@transport_type.id), class: "btn btn-success" %>
     <%end%>  
   </div>
 </div>
+<br/>
