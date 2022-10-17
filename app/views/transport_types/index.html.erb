@@ -14,6 +14,6 @@
 <%end%>
 <div>
   <%if current_user.is_admin? %>
-    <%= link_to "Cadastrar Modalidade de Transporte", new_transport_type_url %>
+    <%= link_to "Cadastrar Modalidade de Transporte", new_transport_type_url, class: 'btn btn-primary' %>
   <%end%>
 </div>

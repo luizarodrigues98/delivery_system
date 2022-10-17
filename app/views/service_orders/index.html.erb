@@ -12,6 +12,6 @@
 <%end%>
 <div>
   <%if current_user.is_admin? %>
-    <%= link_to "Cadastrar Ordem de Serviço", new_service_order_url %>
+    <%= link_to "Cadastrar Ordem de Serviço", new_service_order_url, class: 'btn btn-primary' %>
   <%end%>
 </div>

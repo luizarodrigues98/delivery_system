@@ -1,34 +1,33 @@
 <div>
   <%= f.label :address %>
-  <%= f.text_field :address%>
+  <%= f.text_field :address, class: "form-control"%>
 </div>  
 <div>
   <%= f.label :dimensions %>
-  <%= f.text_field :dimensions %>
+  <%= f.text_field :dimensions, class: "form-control" %>
 </div>
 <div>
   <%= f.label :sku %>
-  <%= f.text_field :sku%>
+  <%= f.text_field :sku, class: "form-control" %>
 </div>  
 <div>
   <%= f.label :weight %>
-  <%= f.number_field :weight%>  
+  <%= f.number_field :weight, class: "form-control" %>  
 </div>
   <div>
   <%= f.label :recipient %>
-  <%= f.text_field :recipient %>
+  <%= f.text_field :recipient, class: "form-control" %>
 </div>  
 <div>
   <%= f.label :recipient_address %>
-  <%= f.text_field :recipient_address %>
+  <%= f.text_field :recipient_address, class: "form-control" %>
 </div>    
 
 <div>
   <%= f.label :total_distance %>
-  <%= f.number_field :total_distance %>
+  <%= f.number_field :total_distance, class: "form-control" %>
 </div> 
-
-
+<br/>
 <div>
-  <%= f.submit 'Enviar' %>
+  <%= f.submit 'Enviar', class: "btn btn-primary" %>
 </div>

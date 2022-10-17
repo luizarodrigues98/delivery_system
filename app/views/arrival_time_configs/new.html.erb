@@ -11,18 +11,19 @@
 <%= form_with(model: @arrival_time, url: transport_type_arrival_time_configs_path(@transport_type.id) ) do |f| %>
   <div>
     <%= f.label :start_distance %>
-    <%= f.number_field :start_distance %>
+    <%= f.number_field :start_distance, class: "form-control" %>
   </div>  
   <div>
     <%= f.label :end_distance %>
-    <%= f.number_field :end_distance %>
+    <%= f.number_field :end_distance, class: "form-control" %>
   </div>  
   
   <div>
     <%= f.label :hours %>
-    <%= f.number_field :hours %>
+    <%= f.number_field :hours, class: "form-control" %>
   </div> 
+  <br/>
   <div>
-    <%= f.submit 'Enviar' %>
+    <%= f.submit 'Enviar', class: 'btn btn-primary' %>
   </div>
 <% end %>
