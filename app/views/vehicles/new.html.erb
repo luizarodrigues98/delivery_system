@@ -9,32 +9,5 @@
 <%end%>
 
 <%= form_with(model: @vehicle, url: vehicles_path ) do |f| %>
-  <div>
-      <%= f.label :plate %>
-      <%= f.text_field :plate%>
-    </div>  
-    <div>
-      <%= f.label :model %>
-      <%= f.text_field :model %>
-    </div>
-    <div>
-      <%= f.label :brand %>
-      <%= f.text_field :brand %>
-    </div> 
-    <div>
-      <%= f.label :max_weight %>
-      <%= f.number_field :max_weight%>  
-    </div>
-      <div>
-      <%= f.label :fabrication_year %>
-      <%= f.number_field :fabrication_year %>
-    </div>  
-    <div>
-      <%= f.label :transport_type_id %>
-      <%= f.collection_select :transport_type_id, @transport_types, :id, :name %>
-    </div>
-
-    <div>
-      <%= f.submit 'Enviar' %>
-    </div>
+  <%= render "form", f:f %>
 <% end %>

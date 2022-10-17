@@ -1,0 +1,28 @@
+<div class="form-group">
+  <%= f.label :plate %>
+  <%= f.text_field :plate, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :model %>
+  <%= f.text_field :model, class: "form-control"  %>
+</div>
+  <div class="form-group">
+  <%= f.label :brand %>
+  <%= f.text_field :brand, class: "form-control"  %>
+</div>
+  <div class="form-group">
+  <%= f.label :max_weight %>
+  <%= f.number_field :max_weight, class: "form-control"  %>
+</div>
+  <div class="form-group">
+  <%= f.label :fabrication_year %>
+  <%= f.number_field :fabrication_year, class: "form-control"  %>
+</div>
+<div>
+  <%= f.label :transport_type_id %>
+  <%= f.collection_select :transport_type_id, @transport_types, :id, :name, {} ,{:class => "form-control"} %>
+</div>
+</br>
+<div class="form-group">
+  <%= f.submit 'Enviar', class: "btn btn-primary" %>
+</div>
