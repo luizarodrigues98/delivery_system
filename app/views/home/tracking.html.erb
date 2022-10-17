@@ -10,6 +10,7 @@
       <%= f.submit 'Buscar', class: "w-100 btn btn-lg btn-primary" %>
 
     <% end %>
+    
     <% if @service_order %>
       <br/>
       <h2> Ordem de Serviço: <%= @service_order.tracking_code %> </h2> 
@@ -21,6 +22,7 @@
           <li><strong> Status: </strong><%= t(@service_order.status) %> </li>
           <li><strong> Veículo nessa rota: </strong><%= @service_order.vehicle.to_s %></li>
           <% if @service_order.status == "delivered_on_time" || @service_order.status == "delivered_with_delay" %>
+            <li><strong> Iniciado em: </strong><%= @service_order.initiated_at.strftime("%d/%m/%Y %H:%M")  %></li>
             <li><strong> Data da Entrega: </strong><%= @service_order.delivered_at.strftime("%d/%m/%Y %H:%M") %></li>
             <% if @service_order.status == 'delivered_with_delay' %>
               <li><strong> Motivo do Atraso: </strong><%= @service_order.reason %></li>

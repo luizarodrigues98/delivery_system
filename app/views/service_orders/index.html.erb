@@ -7,7 +7,7 @@
       <p> Endereço de coleta: <%= t.address %> </p>
       <p> Endereço do Destinatário: <%= t.recipient_address %> </p>
       <p> Distância total: <%= t.total_distance%>Km </p>
-      <br/>
+      <p> Status: <%= t(t.status)%> </p>
     </ul>
   </div>    
 <%end%>

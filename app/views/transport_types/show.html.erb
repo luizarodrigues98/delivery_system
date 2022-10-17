@@ -4,6 +4,7 @@
     <li><strong>Distância Mínima: </strong><%=  @transport_type.min_distance  %>Km</li>
     <li><strong>Distância Máxima: </strong><%= @transport_type.max_distance %>Km</li>
     <li><strong>Taxa fixa: </strong><%= number_to_currency(@transport_type.currency, unit: "R$", separator: ",", delimiter: "") %></li>
+    <li><strong>Peso mínimo: </strong><%= @transport_type.min_weight %>Kg </li>
     <li><strong>Peso máximo: </strong><%= @transport_type.max_weight %>Kg </li>
     <li><strong>Status: </strong><%= @transport_type.active ? 'Ativo' : 'Desativado' %> </li>
   </ul>  
@@ -50,7 +51,7 @@
       <%end%> 
     </table>
     <% if current_user.is_admin? %>
-      <%= link_to "Cadastrar Preço por Peso", new_transport_type_price_per_weight_path(@transport_type.id) %>
+      <%= link_to "Cadastrar Preço por Peso", new_transport_type_price_per_weight_path(@transport_type.id), class: "btn btn-success" %>
     <%end%>  
   </div>
 </div>
@@ -77,7 +78,7 @@
       <%end%> 
     </table>
     <% if current_user.is_admin? %>
-      <%= link_to "Cadastrar Preço por Distância", new_transport_type_price_per_distance_path(@transport_type.id) %>
+      <%= link_to "Cadastrar Preço por Distância", new_transport_type_price_per_distance_path(@transport_type.id), class: "btn btn-success" %>
     <%end%>  
   </div>
 </div>

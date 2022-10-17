@@ -47,3 +47,4 @@ Vehicle.create(plate: 'ARO28', brand: 'CaloiKing', model: 'Caloi', status: 0, ma
 
 ServiceOrder.create(address:'Av. Francisco Sá, 55', sku: 'CAMISETA-589', dimensions: '50cm x 60cm x 30cm', weight: 2 , recipient: 'Maria José', recipient_address: 'Rua das flores, 23', status: 'pending', total_distance: 30)
 ServiceOrder.create(address:'Av. Américas, 566', sku: 'ARMARIO-TRAMONTINA', dimensions: '100cm x 160cm x 300cm', weight: 10 , recipient: 'Maria Inês', recipient_address: 'Rua das bromélias, 23', status: 'pending', total_distance: 60)
+ServiceOrder.create(address:'Av. Santos Dumont, 566', sku: 'MESA-TRAMONTINA', dimensions: '100cm x 160cm x 300cm', weight: 10 , recipient: 'Maria Flávia', recipient_address: 'Rua Palmeira, 23', status: 'pending', total_distance: 10)
