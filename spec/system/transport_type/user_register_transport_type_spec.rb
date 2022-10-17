@@ -8,9 +8,9 @@ describe "Usuário cadastra uma modalidade de transporte" do
     user = User.create!(name: 'Luiza', email: 'luiza@sistemadefrete.com.br', password: 'password', admin: true)
 
     #act
-    visit root_path
+    visit index_path
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Modalidade de Transporte'
     click_on 'Cadastrar Modalidade de Transporte'
     #assert
@@ -27,9 +27,9 @@ describe "Usuário cadastra uma modalidade de transporte" do
     user = User.create!(name: 'Luiza', email: 'luiza@sistemadefrete.com.br', password: 'password', admin: true)
     
     #act
-    visit root_path
+    visit index_path
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Modalidade de Transporte'
     click_on 'Cadastrar Modalidade de Transporte'
     fill_in "Nome",	with: "Caminhão Pequeno"
@@ -52,9 +52,9 @@ describe "Usuário cadastra uma modalidade de transporte" do
     user = User.create!(name: 'Luiza', email: 'luiza@sistemadefrete.com.br', password: 'password', admin: true)
     
     #act
-    visit root_path
+    visit index_path
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Modalidade de Transporte'
     click_on 'Cadastrar Modalidade de Transporte'
     fill_in "Nome",	with: ""

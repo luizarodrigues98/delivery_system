@@ -8,7 +8,7 @@ describe "Usuário cadastra uma Ordem de Serviço" do
     transport_type = TransportType.create!(name: 'Carro', min_distance: 2, max_distance: 200, min_weight: 0, max_weight: 100, fixed_rate: 1000, active: true)
     
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Ordem de Serviço'
     click_on 'Ver Todas'
     click_on 'Cadastrar Ordem de Serviço'
@@ -28,7 +28,7 @@ describe "Usuário cadastra uma Ordem de Serviço" do
     transport_type = TransportType.create!(name: 'Carro', min_distance: 2, max_distance: 200, min_weight: 0, max_weight: 100, fixed_rate: 1000, active: true)
 
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Ordem de Serviço'
     click_on 'Ver Todas'
     click_on 'Cadastrar Ordem de Serviço'
@@ -50,7 +50,7 @@ describe "Usuário cadastra uma Ordem de Serviço" do
     transport_type = TransportType.create!(name: 'Carro', min_distance: 2, max_distance: 200, min_weight: 0, max_weight: 100, fixed_rate: 1000, active: true)
     
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Ordem de Serviços'    
     click_on 'Ver Todas'
     click_on 'Cadastrar Ordem de Serviço'

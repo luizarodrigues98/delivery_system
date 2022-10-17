@@ -7,9 +7,9 @@ describe "Usuário(admin) edita um usuário regular" do
     second_user = User.create!(name: 'João', email: 'joao@sistemadefrete.com.br', password: 'password')
     
     #ACT
-    visit(root_path) 
+    visit(index_path) 
     login_as(user)
-    visit root_path
+    visit index_path
     click_on('Usuários')
     within 'table', id: 'user' do
       click_on 'Editar'

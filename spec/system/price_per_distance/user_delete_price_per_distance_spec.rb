@@ -8,7 +8,7 @@ describe "Usuário remove uma configuração de preço por distancia" do
     price_per_distance= PricePerDistance.create!(start_distance: 0, end_distance: 30, rate: 9, transport_type_id: transport_type.id)
     #act
     login_as(user)
-    visit root_path
+    visit index_path
     within 'header' do
       click_on 'Modalidade de Transporte'
     end

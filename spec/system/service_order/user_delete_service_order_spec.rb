@@ -10,7 +10,7 @@ describe "Usuário remove uma ordem de serviço" do
       recipient_address: 'rua cruzeiro do sul, 714', sku:'iphone-12s', total_distance: 20, arrival_time:24, total_value: 20, delivered_at: '2022-10-10', transport_type: transport_type)
     #act
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Ordem de Serviços'
     click_on 'Ver Todas'
     click_on service.tracking_code
@@ -30,7 +30,7 @@ describe "Usuário remove uma ordem de serviço" do
       recipient_address: 'rua cristal', sku:'iphone-13s', total_distance: 20, arrival_time:24, total_value: 20, delivered_at: '2022-10-10', transport_type: transport_type)
     #act
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Ordem de Serviços'
     click_on 'Ver Todas'
     click_on service.tracking_code

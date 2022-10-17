@@ -8,9 +8,9 @@ describe "Usuário cadastra um veiculo" do
     user = User.create!(name: 'Luiza', email: 'luiza@sistemadefrete.com.br', password: 'password', admin: true)
 
     #act
-    visit root_path
+    visit index_path
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Veículos'
     click_on 'Cadastrar Veículo'
     #assert
@@ -28,9 +28,9 @@ describe "Usuário cadastra um veiculo" do
     transport_type = TransportType.create!(name: 'Carro', min_distance: 2, max_distance: 200, min_weight: 0, max_weight: 100, fixed_rate: 1000, active: true)
     
     #act
-    visit root_path
+    visit index_path
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Veículos'
     click_on 'Cadastrar Veículo'
     fill_in "Placa",	with: "PXQ-889"
@@ -53,9 +53,9 @@ describe "Usuário cadastra um veiculo" do
     transport_type = TransportType.create!(name: 'Carro', min_distance: 2, max_distance: 200, min_weight: 0, max_weight: 100, fixed_rate: 1000, active: true)
     
     #act
-    visit root_path
+    visit index_path
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Veículos'
     click_on 'Cadastrar Veículo'
     fill_in "Placa",	with: ""

@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "Usuário se autentica" do
 
   it 'com sucesso' do
-    visit root_path
+    visit index_path
     click_on 'Inscrever-se'
     fill_in "Nome",	with: "Maria" 
     fill_in "E-mail",	with: 'maria@sistemadefrete.com.br'

@@ -8,7 +8,7 @@ describe "Usuário remove uma configuração de prazo" do
     arrival_time = ArrivalTimeConfig.create!(start_distance: 0, end_distance: 10, hours: 5, transport_type_id: transport_type.id)
     #act
     login_as(user)
-    visit root_path
+    visit index_path
     within 'header' do
       click_on 'Modalidade de Transporte'
     end

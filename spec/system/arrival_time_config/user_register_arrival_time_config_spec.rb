@@ -10,7 +10,7 @@ describe "Usuário cadastra uma configuração de prazo" do
 
     #act
     login_as(user)
-    visit root_path
+    visit index_path
     within 'header' do
       click_on 'Modalidade de Transporte'
     end    
@@ -30,7 +30,7 @@ describe "Usuário cadastra uma configuração de prazo" do
     
     #act
     login_as(user)
-    visit root_path
+    visit index_path
     within 'header' do
       click_on 'Modalidade de Transporte'
     end    
@@ -55,7 +55,7 @@ describe "Usuário cadastra uma configuração de prazo" do
     
     #act
     login_as(user)
-    visit root_path
+    visit index_path
     within 'header' do
       click_on 'Modalidade de Transporte'
     end    

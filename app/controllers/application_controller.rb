@@ -2,10 +2,14 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
+  
+  def after_sign_in_path_for(resource)
+    index_path
+  end
 
   def check_is_admin
     unless current_user.is_admin?
-      redirect_to root_path, alert: "Você não tem acesso a essa página!"
+      redirect_to index_path, alert: "Você não tem acesso a essa página!"
     end
   end
 

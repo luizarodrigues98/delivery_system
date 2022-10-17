@@ -9,8 +9,8 @@ describe "Usuário remove um veículo" do
 
     #act
     login_as(user)
-    visit root_path
-    visit root_path
+    visit index_path
+    visit index_path
     within 'header' do
       click_on 'Veículos'
     end
@@ -28,7 +28,7 @@ describe "Usuário remove um veículo" do
     
     #act
     login_as(user)
-    visit root_path
+    visit index_path
     within 'header' do
       click_on 'Veículos'
     end    

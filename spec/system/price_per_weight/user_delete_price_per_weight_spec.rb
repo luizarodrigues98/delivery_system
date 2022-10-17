@@ -8,7 +8,7 @@ describe "Usuário remove uma configuração de preço por peso" do
     price_per_weight = PricePerWeight.create!(start_weight: 0, end_weight: 30, value_per_distance: 8.9, transport_type_id: transport_type.id)
     #act
     login_as(user)
-    visit root_path
+    visit index_path
     within 'header' do
       click_on 'Modalidade de Transporte'
     end

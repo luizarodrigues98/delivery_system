@@ -11,7 +11,7 @@ describe "Usuário edita uma Ordem de Serviço" do
       
     #act
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Ordem de Serviço'
     click_on 'Pendentes'
     click_on service.tracking_code
@@ -31,7 +31,7 @@ describe "Usuário edita uma Ordem de Serviço" do
       
     #act
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Ordem de Serviço'
     click_on 'Pendentes'
     click_on service.tracking_code

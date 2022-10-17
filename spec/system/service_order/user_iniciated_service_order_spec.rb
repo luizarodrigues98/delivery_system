@@ -12,7 +12,7 @@ describe "Usuário inicia uma Ordem de Serviço" do
       recipient_address: 'rua cruzeiro do sul, 714', sku:'iphone-12s', total_distance: 20)
 
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Ordem de Serviço'
     click_on 'Pendentes'
     click_on service.tracking_code
@@ -35,7 +35,7 @@ describe "Usuário inicia uma Ordem de Serviço" do
       recipient_address: 'rua cruzeiro do sul, 714', sku:'iphone-12s', total_distance: 20)
 
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Ordem de Serviço'
     click_on 'Pendentes'
     click_on service.tracking_code

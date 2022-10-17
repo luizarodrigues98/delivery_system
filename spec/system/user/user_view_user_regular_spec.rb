@@ -9,9 +9,9 @@ describe "Usuário(admin) vê todos os usuários regulares" do
     last_user = User.create!(name: 'Teste', email: 'teste@sistemadefrete.com.br', password: 'password')
     
     #ACT
-    visit(root_path) 
+    visit(index_path) 
     login_as(user)
-    visit root_path
+    visit index_path
     click_on('Usuários')
     #ASSERT
     expect(page).to have_content('joao@sistemadefrete.com.br')

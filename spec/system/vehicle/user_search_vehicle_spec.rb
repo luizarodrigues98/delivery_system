@@ -6,7 +6,7 @@ describe "Usuário busca por um veiculo" do
     user = User.create!(name: 'Luiza', email: 'luiza@sistemadefrete.com.br', password: 'password')
     #act 
     login_as(user)
-    visit root_path
+    visit index_path
     #assert
     expect(page).not_to have_field('Buscar Veículo') 
     expect(page).not_to have_button('Buscar') 
@@ -18,7 +18,7 @@ describe "Usuário busca por um veiculo" do
 
     #act 
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Veículos'
   
     expect(page).to have_field('Buscar Veículo') 
@@ -31,7 +31,7 @@ describe "Usuário busca por um veiculo" do
     vehicle = Vehicle.create!(plate: 'XYZ-123', brand:'Chevrolet', model: 'GOL', status: 0, max_weight: 100, fabrication_year: 2015, transport_type: transport_type)
     #act     
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Veículos'
     fill_in "Buscar Veículo", with: vehicle.plate
     click_on 'Buscar'
@@ -52,7 +52,7 @@ describe "Usuário busca por um veiculo" do
 
     #act     
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Veículos'
     fill_in "Buscar Veículo", with: 'XYZ'
     click_on 'Buscar'    

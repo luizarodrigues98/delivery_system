@@ -10,9 +10,9 @@ describe "Usuário edita um veiculo" do
     vehicle = Vehicle.create!(plate: 'XYZ-123', brand:'Chevrolet', model: 'GOL', status: 0, max_weight: 100, fabrication_year: 2015, transport_type: transport_type)
 
     #act
-    visit root_path
+    visit index_path
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Veículos'
     click_on 'XYZ-123'
     click_on 'Editar'
@@ -33,9 +33,9 @@ describe "Usuário edita um veiculo" do
     vehicle = Vehicle.create!(plate: 'XYZ-123', brand:'Chevrolet', model: 'GOL', status: 0, max_weight: 100, fabrication_year: 2015, transport_type: transport_type)
 
     #act
-    visit root_path
+    visit index_path
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Veículos'
     click_on 'XYZ-123'
     click_on 'Editar'

@@ -7,9 +7,9 @@ describe "Usuário remove uma modalidade de transporte" do
     transport_type = TransportType.create!(name: 'Carro', min_distance: 2, max_distance: 200, min_weight: 0, max_weight: 100, fixed_rate: 1000, active: true)
 
     #act
-    visit root_path
+    visit index_path
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Modalidade de Transporte'
     click_on transport_type.name
     click_on 'Excluir'
@@ -24,9 +24,9 @@ describe "Usuário remove uma modalidade de transporte" do
     
     other_transport_type = TransportType.create!(name: 'Moto', min_distance: 2, max_distance: 200, min_weight: 0, max_weight: 10, fixed_rate: 1000, active: true)
     #act
-    visit root_path
+    visit index_path
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Modalidade de Transporte'
     click_on transport_type.name
     click_on 'Excluir'

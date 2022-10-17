@@ -13,7 +13,7 @@ describe "Usuário finaliza uma Ordem de Serviço" do
       transport_type: transport_type, vehicle: vehicle )
 
     login_as(user)
-    visit root_path
+    visit index_path
     click_on 'Ordem de Serviço'
     click_on 'Ativas'
     click_on service.tracking_code

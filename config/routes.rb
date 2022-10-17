@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root to: "home#index"
+  root to: "home#tracking"
   get 'tracking', to: 'home#tracking'
   post 'tracking_code', to: 'home#search'
+
+  get 'index', to: 'home#index'
+
   resources :transport_types  do
     resources :price_per_weights, only: [:new, :create, :destroy]
     resources :price_per_distances, only: [:new, :create, :destroy]
