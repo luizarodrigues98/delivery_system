@@ -49,6 +49,25 @@ describe "Usuário cadastra uma modalidade de transporte" do
   end
 
   it 'com dados incompletos' do
+    user = User.create!(name: 'Luiza', email: 'luiza@sistemadefrete.com.br', password: 'password', admin: true)
+    
+    #act
+    visit root_path
+    login_as(user)
+    visit root_path
+    click_on 'Modalidade de Transporte'
+    click_on 'Cadastrar Modalidade de Transporte'
+    fill_in "Nome",	with: ""
+    fill_in 'Distância Mínima',	with: nil 
+    fill_in 'Distância Máxima',	with: nil
+    fill_in 'Taxa fixa',	with: 1000  
+    fill_in "Peso Mínimo",	with: 0 
+    fill_in 'Peso Máximo',	with: 500
+    click_on 'Enviar'
+    #assert
+    expect(current_path).to  eq transport_types_path 
+    expect(page).to have_content 'Modalidade de transporte não cadastrado' 
+
   end
 end
  

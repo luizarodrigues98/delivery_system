@@ -1,0 +1,32 @@
+<%= form_with(url: tracking_code_path) do |f| %>
+  <h1 class="h3 mb-3 fw-normal">Rastreamento</h1>
+  <div class="form-floating">
+    <%= f.text_field :code, autofocus: true, class: "form-control" %>
+    <%= f.label :code, 'Código' %>
+  </div>
+  <br/>
+  <%= f.submit 'Buscar', class: "w-100 btn btn-lg btn-primary" %>
+
+<% end %>
+<% if @service_order %>
+  <br/>
+  <h2> Ordem de Serviço: <%= @service_order.tracking_code %> </h2> 
+  <div>
+    <ul>
+      <li><strong>Endereço de saída: </strong><%=  @service_order.address  %></li>
+      <li><strong> Destinatário: </strong><%= @service_order.recipient %> </li>
+      <li><strong> Endereço do Destinatário: </strong><%= @service_order.recipient_address %> </li>
+      <li><strong> Status: </strong><%= t(@service_order.status) %> </li>
+      <li><strong> Veículo nessa rota: </strong><%= @service_order.vehicle.to_s %></li>
+      <% if @service_order.status == "delivered_on_time" || @service_order.status == "delivered_with_delay" %>
+        <li><strong> Data da Entrega: </strong><%= @service_order.delivered_at.strftime("%d/%m/%Y %H:%M") %></li>
+        <% if @service_order.status == 'delivered_with_delay' %>
+          <li><strong> Motivo do Atraso: </strong><%= @service_order.reason %></li>
+        <%end%>
+      <%end%>
+      <%if @service_order.status == "in_delivery"%>
+        <li><strong> Data Prevista para Entrega: </strong><%= (@service_order.initiated_at + @service_order.arrival_time.hours).strftime("%d/%m/%Y %H:%M") %></li>
+      <%end%>
+    </ul>  
+  </div>
+<% end %>
