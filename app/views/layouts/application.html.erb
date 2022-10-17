@@ -22,10 +22,15 @@
         
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li>
-            <%= link_to "Veículos", vehicles_path, class:"nav-link px-2 link-#{controller_name == 'vehicles' ? 'secondary' : 'dark'}" %>
+            <%if current_user.is_admin? %>
+              <%= link_to "Usuários", admins_users_path, class:"nav-link px-2 link-#{controller_name == 'users' ? 'secondary' : 'dark'}" %>
+            <%end%>
           </li>
           <li>
             <%= link_to "Modalidade de Transporte", transport_types_url , class:"nav-link px-2 link-#{controller_name == 'transport_types' ? 'secondary' : 'dark'}" %>
+          </li>
+          <li>
+            <%= link_to "Veículos", vehicles_path, class:"nav-link px-2 link-#{controller_name == 'vehicles' ? 'secondary' : 'dark'}" %>
           </li>
           <li class="dropdown">
             <a class="<%= "nav-link px-2 link-#{controller_name == 'service_orders' ? 'secondary' : 'dark'} dropdown-toggle" %>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -54,7 +59,8 @@
             <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/256x256/plain/user.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="#">Minha Conta</a></li>
+            <li> 
+            <a class="dropdown-item" href="#">Minha Conta</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><%=  button_to 'Sair', destroy_user_session_url, method: :delete, class: "dropdown-item"%></li>
           </ul>

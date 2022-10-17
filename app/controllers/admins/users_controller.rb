@@ -4,7 +4,7 @@ class Admins::UsersController < ApplicationController
     @users = User.where(admin: false)
     @admins = User.where(admin: true)
   end
-
+  
   def new
     @user = User.new
   end
@@ -39,7 +39,9 @@ class Admins::UsersController < ApplicationController
     @user.destroy
     redirect_to admins_users_path, notice: 'Usuário removido com sucesso'
   end
-
+  def show
+    @user = User.find(params[:id])
+  end
   private 
   def user_params
     params.require(:user).permit(:admin, :name, :email, :password, :confirmation_password)
