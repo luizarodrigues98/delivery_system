@@ -1,16 +1,16 @@
 <h3> Veiculos</h3> 
 <div class="row" >
-  <div class="col-md-3">
-    <%if current_user.is_admin? %>
-      <%= link_to "Cadastrar Veículo", new_vehicle_path, class:"btn btn-primary" %>
-    <%end%>
-  </div>
   </br>
   <div class="col-md-6">
     <%= form_with(url: search_vehicles_path, method: :get) do |f|%>
       <%= f.label :query, 'Buscar Veículo pela Placa'%>
       <%= f.text_field :query, class:'form-control-sm'%>
       <%= f.submit 'Buscar', class:'btn btn-success' %> 
+    <%end%>
+  </div>
+  <div class="col-md-3">
+    <%if current_user.is_admin? %>
+      <%= link_to "Cadastrar Veículo", new_vehicle_path, class:"btn btn-primary" %>
     <%end%>
   </div>
 </div>
