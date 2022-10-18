@@ -4,13 +4,14 @@
 <% @transport_types.each do |t|%>
   <div>
     <ul>
-      <li>  <%= link_to t.name, transport_type_url(t.id)%> </li>
+      <li> <%= link_to t.name, transport_type_url(t.id)%> </li>
+      <p>  Taxa fixa: <%= number_to_currency(t.currency, unit: "R$", separator: ",", delimiter: "") %> </p>
+      <p> Distância Mínima: <%= t.min_distance%>Km </p>
+      <p> Distância Máxima: <%= t.max_distance%>Km </p>
+      <p> Status: <span class="badge text-bg-<%= t.active ? "success" : "warning" %>"><%= I18n.translate(t.active)%></span> </p>
     </ul>
   </div>
-  <div>
-    <p> Taxa fixa: <%= number_to_currency(t.currency, unit: "R$", separator: ",", delimiter: "") %> </p>
-    <p> Distância Máxima: <%= t.max_distance%>Km </p>
-  </div>
+  <hr>
 <%end%>
 <div>
   <%if current_user.is_admin? %>

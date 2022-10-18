@@ -8,6 +8,8 @@
       <p> Endereço do Destinatário: <%= o.recipient_address %> </p>
       <p> Distância total: <%= o.total_distance%>Km </p>
       <p> Veículo nessa rota: <%= o.vehicle.to_s %></p>
+      <p> Status:  <span class="badge text-bg-success"><%= t(o.status)%></span>  </p>
+
     </ul>
   </div>    
 <%end%>

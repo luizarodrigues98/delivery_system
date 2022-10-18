@@ -1,4 +1,9 @@
 class TransportType < ApplicationRecord
+  STATUS = [
+    [1, 'Ativado'],
+    [0, 'Desativado']
+  ].freeze
+
   has_many :price_per_weights
   has_many :price_per_distances
   has_many :arrival_time_configs

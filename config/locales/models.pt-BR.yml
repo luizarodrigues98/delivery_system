@@ -5,6 +5,8 @@ pt-BR:
   active: Ativo
   allocated: Alocado
   maintenance: Em Manutenção
+  true: ativado
+  false: desativado
   pending: Pendente
   in_delivery: Em entrega
   delivered_on_time: Entregue no prazo
@@ -18,6 +20,7 @@ pt-BR:
       user: Usuário
       arrival_time_config: Prazo
       service_order: Ordem de Serviço
+      transport_type: Modalidade de Transporte
     attributes:
       vehicle:
         plate: Placa
@@ -57,5 +60,11 @@ pt-BR:
         total_value: Valor Total
         transport_type_id: Modalidade de Transporte
         vehicle_id: Veículo
-
-
+      transport_type:
+        name: Nome
+        min_distance: Distância Mínima
+        max_distance: Distância Máxima
+        min_weight: Peso Mínimo
+        max_weight: Peso Máximo
+        fixed_rate: Taxa fixa
+        active: Status
