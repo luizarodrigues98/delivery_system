@@ -8,9 +8,8 @@
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>   
 </head>
-
 <body>
   <header class="p-3 mb-3 border-bottom" id="header">
     <div class="container">
@@ -18,7 +17,7 @@
         <%= link_to index_path, class:"d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none" do%>
           <span class="fs-4"> Sistema de Fretes </span>
         <%end%>
-        
+
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li>
             <%if current_user.is_admin? %>

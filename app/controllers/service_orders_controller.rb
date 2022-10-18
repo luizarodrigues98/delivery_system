@@ -41,6 +41,8 @@ class ServiceOrdersController < ApplicationController
   end
 
   def destroy
+    service_order_vehicle = @service_order.vehicle.active!
+    
     @service_order.destroy
     redirect_to service_orders_path, notice: 'Ordem de serviço deletado com sucesso'
   end

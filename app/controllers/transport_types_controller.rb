@@ -57,8 +57,13 @@ class TransportTypesController < ApplicationController
   end
 
   def destroy
-    @transport_type.destroy 
-    redirect_to transport_types_path, notice: 'Modalidade de Transporte removido com sucesso'        
+    if @transport_type.service_orders.in_delivery.any?
+      redirect_to transport_types_path, notice: 'Modalidade de Transporte não foi removida, possui ordens de serviço em entrega'
+    else
+      @transport_type.service_orders.where("status = 2 OR status = 3").update_all(transport_type_id: nil, vehicle_id: nil)
+      @transport_type.destroy 
+      redirect_to transport_types_path, notice: 'Modalidade de Transporte removida com sucesso'        
+    end
   end
 
   private

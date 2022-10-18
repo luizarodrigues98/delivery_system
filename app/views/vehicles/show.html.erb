@@ -14,9 +14,11 @@
 
 <%if current_user.is_admin? %>
   <div class="row">
+      <%unless @vehicle.allocated? %>
     <div class= "col-md-1">
-      <%= button_to("Excluir", vehicle_path(@vehicle.id), method: :delete, class: 'btn btn-danger')%>
+        <%= button_to("Excluir", vehicle_path(@vehicle.id), method: :delete,data: {confirm: "Deseja realmente excluir esse veículo?"}, class: 'btn btn-danger' )%>
     </div>
+      <%end%>
     <div class= "col-md-1">
       <%= link_to "Editar", edit_vehicle_path(@vehicle.id), class: 'btn btn-info' %>
     </div>

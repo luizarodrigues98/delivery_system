@@ -1,5 +1,6 @@
 <h3> Ordens de Serviço</h3> 
 
+<hr>
 <% @service_orders.each do |t|%>
   <div>
     <ul>
@@ -11,6 +12,8 @@
     </ul>
   </div>    
 <%end%>
+<hr>
+
 <div>
   <%if current_user.is_admin? %>
     <%= link_to "Cadastrar Ordem de Serviço", new_service_order_url, class: 'btn btn-primary' %>

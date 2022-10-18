@@ -1,10 +1,12 @@
 <h1> Resultados da Busca por: <%= @plate %> </h1>
 
-<p> <%= @vehicles.count %> <%= Vehicle.model_name.human(count: @vehicles.count) %> <%=t(:found, count: @vehicles.count)%> </p>
+<p><%= @vehicles.count %> <%= Vehicle.model_name.human(count: @vehicles.count) %> <%=t(:found, count: @vehicles.count)%> </p>
 
 <% @vehicles.each do |vehicle| %>
-  <li> <%= link_to vehicle.plate, vehicle_path(vehicle.id)%> </li>
-  <li>Modelo: <%= vehicle.model%></li>
-  <li>Marca: <%= vehicle.brand%></li>
+  <ul>
+    <li> <%= link_to vehicle.plate, vehicle_path(vehicle.id)%> </li>
+    <p>Modelo: <%= vehicle.model%></p>
+    <p>Marca: <%= vehicle.brand%></p>
+  </ul>
 <br/>
 <%end%>

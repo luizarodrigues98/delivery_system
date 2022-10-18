@@ -4,11 +4,11 @@ class TransportType < ApplicationRecord
     [0, 'Desativado']
   ].freeze
 
-  has_many :price_per_weights
-  has_many :price_per_distances
-  has_many :arrival_time_configs
+  has_many :price_per_weights, dependent: :destroy
+  has_many :price_per_distances, dependent: :destroy
+  has_many :arrival_time_configs, dependent: :destroy
   has_many :service_orders
-  has_many :vehicles
+  has_many :vehicles, dependent: :destroy
 
   validates :name, presence: true
   validates :max_distance, presence: true

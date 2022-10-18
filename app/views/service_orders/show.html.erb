@@ -21,11 +21,17 @@
     <%end%>
   </ul>  
 </div>
-<div>
+<div class="row">
   <% if current_user.is_admin? %>
-    <%= link_to('Editar', edit_service_order_path(@service_order.id), class: 'btn btn-light') %>
-    <%= button_to('Excluir', service_order_path(@service_order.id), method: :delete, data: {confirm: "Deseja realmente excluir essa ordem de serviço?"},  class: 'btn btn-danger') %>
-  <br/>
+      <div class= "col-md-1">
+        <%= link_to('Editar', edit_service_order_path(@service_order.id), class: 'btn btn-secondary') %>
+      </div>    
+      <%unless @service_order.in_delivery?%>
+      <div class= "col-md-1">
+        <%= button_to('Excluir', service_order_path(@service_order.id), method: :delete, data: {confirm: "Deseja realmente excluir essa ordem de serviço?"},  class: 'btn btn-danger') %>
+      </div>
+      <% end %>
+    <br/>
   <% end %>
 </div>
 <% if @service_order.status == 'pending' %>
@@ -77,7 +83,7 @@
 
     <%end%>
   <% else %>
-    <%= button_to "Entregue", delivered_service_order_path(@service_order.id), class: 'btn btn-light'  %>
+    <%= button_to "Entregue", delivered_service_order_path(@service_order.id), class: 'btn btn-success'  %>
   <% end %>
 <% end %>
 
