@@ -9,7 +9,9 @@ describe "Usuário cadastra uma Ordem de Serviço" do
     
     login_as(user)
     visit index_path
-    click_on 'Ordem de Serviço'
+    within 'body', id: 'nav' do
+      click_on 'Ordem de Serviços'
+    end
     click_on 'Ver Todas'
     click_on 'Cadastrar Ordem de Serviço'
   
@@ -29,7 +31,9 @@ describe "Usuário cadastra uma Ordem de Serviço" do
 
     login_as(user)
     visit index_path
-    click_on 'Ordem de Serviço'
+    within 'body', id: 'nav' do
+      click_on 'Ordem de Serviços'
+    end
     click_on 'Ver Todas'
     click_on 'Cadastrar Ordem de Serviço'
     fill_in "Endereço de coleta",	with: "rua carvalho mota, 125" 
@@ -51,7 +55,9 @@ describe "Usuário cadastra uma Ordem de Serviço" do
     
     login_as(user)
     visit index_path
-    click_on 'Ordem de Serviços'    
+    within 'body', id: 'nav' do
+      click_on 'Ordem de Serviços'
+    end    
     click_on 'Ver Todas'
     click_on 'Cadastrar Ordem de Serviço'
     fill_in "Endereço de coleta",	with: "" 

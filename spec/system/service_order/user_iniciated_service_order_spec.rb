@@ -13,7 +13,9 @@ describe "Usuário inicia uma Ordem de Serviço" do
 
     login_as(user)
     visit index_path
-    click_on 'Ordem de Serviço'
+    within 'body', id: 'nav' do
+      click_on 'Ordem de Serviços'
+    end
     click_on 'Pendentes'
     click_on service.tracking_code
     choose(option: transport_type.id)
@@ -36,7 +38,9 @@ describe "Usuário inicia uma Ordem de Serviço" do
 
     login_as(user)
     visit index_path
-    click_on 'Ordem de Serviço'
+    within 'body', id: 'nav' do
+      click_on 'Ordem de Serviços'
+    end
     click_on 'Pendentes'
     click_on service.tracking_code
     click_on 'Iniciar ordem de serviço'

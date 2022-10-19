@@ -14,7 +14,9 @@ describe "Usuário finaliza uma Ordem de Serviço" do
 
     login_as(user)
     visit index_path
-    click_on 'Ordem de Serviço'
+    within 'body', id: 'nav' do
+      click_on 'Ordem de Serviços'
+    end
     click_on 'Ativas'
     click_on service.tracking_code
     click_on 'Entregue'

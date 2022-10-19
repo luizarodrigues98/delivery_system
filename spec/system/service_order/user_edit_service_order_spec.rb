@@ -12,7 +12,9 @@ describe "Usuário edita uma Ordem de Serviço" do
     #act
     login_as(user)
     visit index_path
-    click_on 'Ordem de Serviço'
+    within 'body', id: 'nav' do
+      click_on 'Ordem de Serviços'
+    end
     click_on 'Pendentes'
     click_on service.tracking_code
     click_on 'Editar'
@@ -32,7 +34,9 @@ describe "Usuário edita uma Ordem de Serviço" do
     #act
     login_as(user)
     visit index_path
-    click_on 'Ordem de Serviço'
+    within 'body', id: 'nav' do
+      click_on 'Ordem de Serviços'
+    end
     click_on 'Pendentes'
     click_on service.tracking_code
     click_on 'Editar'

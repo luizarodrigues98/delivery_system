@@ -14,7 +14,7 @@ describe "Usuário remove uma modalidade de transporte" do
     click_on transport_type.name
     click_on 'Excluir'
     expect(current_path).to eq transport_types_path
-    expect(page).to have_content 'Modalidade de Transporte removido com sucesso'
+    expect(page).to have_content 'Modalidade de Transporte removida com sucesso'
     expect(page).not_to have_content 'Carro'  
   end 
   
@@ -31,7 +31,7 @@ describe "Usuário remove uma modalidade de transporte" do
     click_on transport_type.name
     click_on 'Excluir'
     expect(current_path).to eq transport_types_path
-    expect(page).to have_content 'Modalidade de Transporte removido com sucesso'
+    expect(page).to have_content 'Modalidade de Transporte removida com sucesso'
     expect(page).not_to have_content 'Carro'  
   end
   
