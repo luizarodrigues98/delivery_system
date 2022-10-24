@@ -41,6 +41,8 @@ Execute a aplicação.
 
 ```
 rails server
+Logins: admin - maria@sistemadefrete.com.br (senha: password)
+usuário regular: joao@sistemadefrete.com.br (senha: password)
 ```
 
 ## ⚙️ Executando os testes
