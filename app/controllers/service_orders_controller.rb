@@ -1,7 +1,7 @@
 class ServiceOrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_service_order, only: [:show, :destroy, :initiate, :edit, :update, :delivered] 
-  before_action :check_is_admin, except: [:index, :show, :pending, :in_delivery, :finished]
+  before_action :check_is_admin, except: [:index, :show, :pending, :in_delivery, :finished, :initiate, :delivered]
 
   def index
     @service_orders = ServiceOrder.all
